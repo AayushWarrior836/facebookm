@@ -1,61 +1,107 @@
 import { useState, useEffect } from "react";
-import { Search, Home, User, Bell, Moon, Sun } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Search, Home, Tv, Store, Users, Gamepad2, Bell, MessageCircle, Menu, Moon, Sun } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import { notifications } from "@/data/posts";
+import profileImg from "@/assets/profile-shiva.jpg";
 
 const Navbar = () => {
   const [dark, setDark] = useState(() => localStorage.getItem("theme") === "dark");
   const [showNotifs, setShowNotifs] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
     localStorage.setItem("theme", dark ? "dark" : "light");
   }, [dark]);
 
-  return (
-    <nav className="sticky top-0 z-40 flex items-center justify-between px-4 py-2 bg-card shadow-sm border-b">
-      <Link to="/" className="flex items-center gap-2">
-        <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center">
-          <span className="text-primary-foreground font-bold text-xl" style={{ fontFamily: "Georgia, serif" }}>f</span>
-        </div>
-        <span className="hidden md:inline text-xl font-bold text-primary">Facebook</span>
-      </Link>
+  const navItems = [
+    { icon: Home, path: "/", label: "Home" },
+    { icon: Tv, path: "#", label: "Watch" },
+    { icon: Store, path: "#", label: "Marketplace" },
+    { icon: Users, path: "#", label: "Groups" },
+    { icon: Gamepad2, path: "#", label: "Gaming" },
+  ];
 
-      <div className="flex-1 max-w-md mx-4">
-        <div className="relative">
+  return (
+    <nav className="sticky top-0 z-40 flex items-center justify-between h-14 px-4 bg-card shadow-sm">
+      {/* Left: Logo + Search */}
+      <div className="flex items-center gap-2">
+        <Link to="/" className="flex items-center">
+          <svg viewBox="0 0 36 36" className="w-10 h-10" fill="hsl(214, 89%, 52%)">
+            <path d="M20.181 35.87C29.094 34.791 36 27.202 36 18c0-9.941-8.059-18-18-18S0 8.059 0 18c0 4.921 1.971 9.381 5.166 12.624L5.15 25.5h4.1l1.65-6.6H7.2L7.8 16h3.75l.45-2.85c.399-2.55 2.1-4.95 6.3-4.95 1.65 0 3.15.3 3.15.3v3.6h-1.8c-1.65 0-2.25.9-2.25 2.1V16h4.05l-.6 2.9h-3.45l-1.65 6.6h3.75l.081 5.07z"/>
+          </svg>
+        </Link>
+        <div className="relative hidden md:block">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-           <input
-             placeholder="Search Facebook"
-             className="w-full pl-10 pr-4 py-2 rounded-full bg-secondary text-foreground text-sm outline-none focus:ring-2 focus:ring-primary/30"
-           />
+          <input
+            placeholder="Search Facebook"
+            className="w-60 pl-10 pr-4 py-2 rounded-full bg-secondary text-foreground text-sm outline-none focus:ring-2 focus:ring-primary/30 focus:w-72 transition-all"
+          />
         </div>
       </div>
 
+      {/* Center: Navigation Icons */}
+      <div className="hidden md:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
+        {navItems.map((item) => {
+          const isActive = item.path !== "#" && location.pathname === item.path;
+          return (
+            <Link
+              key={item.label}
+              to={item.path}
+              className={`relative flex items-center justify-center w-24 h-12 rounded-lg transition-colors group ${
+                isActive
+                  ? "text-primary"
+                  : "text-muted-foreground hover:bg-secondary"
+              }`}
+              title={item.label}
+            >
+              <item.icon className="w-6 h-6" />
+              {isActive && (
+                <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-primary rounded-t-full" />
+              )}
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* Right: Action Icons */}
       <div className="flex items-center gap-1">
-        <Link to="/" className="p-2 rounded-full hover:bg-secondary transition-colors">
-          <Home className="w-5 h-5 text-primary" />
-        </Link>
-        <Link to="/profile" className="p-2 rounded-full hover:bg-secondary transition-colors">
-          <User className="w-5 h-5 text-muted-foreground hover:text-primary" />
-        </Link>
+        <button
+          onClick={() => setShowMenu(!showMenu)}
+          className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors"
+        >
+          <Menu className="w-5 h-5 text-foreground" />
+        </button>
+        <button className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors">
+          <MessageCircle className="w-5 h-5 text-foreground" />
+        </button>
         <div className="relative">
           <button
             onClick={() => setShowNotifs(!showNotifs)}
-            className="p-2 rounded-full hover:bg-secondary transition-colors relative"
+            className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors relative"
           >
-            <Bell className="w-5 h-5 text-muted-foreground hover:text-primary" />
-            <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-destructive rounded-full" />
+            <Bell className="w-5 h-5 text-foreground" />
+            <span className="absolute top-1 right-1 w-4 h-4 bg-destructive rounded-full text-[10px] text-destructive-foreground flex items-center justify-center font-bold">3</span>
           </button>
           {showNotifs && (
-            <div className="absolute right-0 top-12 w-80 bg-card rounded-lg shadow-xl border p-3 z-50">
-              <h3 className="font-semibold mb-2">Notifications</h3>
+            <div className="absolute right-0 top-12 w-80 bg-card rounded-lg shadow-xl border p-4 z-50 animate-scale-in">
+              <h3 className="font-bold text-xl mb-3">Notifications</h3>
               {notifications.map((n) => (
                 <div
                   key={n.id}
-                  className={`p-2 rounded-lg text-sm mb-1 ${n.read ? "text-muted-foreground" : "bg-accent font-medium"}`}
+                  className={`flex items-start gap-3 p-2 rounded-lg text-sm mb-1 cursor-pointer hover:bg-secondary transition-colors ${
+                    n.read ? "text-muted-foreground" : "bg-accent/50"
+                  }`}
                 >
-                  <p>{n.text}</p>
-                  <span className="text-xs text-muted-foreground">{n.time}</span>
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <Bell className="w-4 h-4 text-primary" />
+                  </div>
+                  <div>
+                    <p className={n.read ? "" : "font-medium"}>{n.text}</p>
+                    <span className="text-xs text-primary">{n.time}</span>
+                  </div>
+                  {!n.read && <span className="w-3 h-3 rounded-full bg-primary shrink-0 mt-1" />}
                 </div>
               ))}
             </div>
@@ -63,10 +109,13 @@ const Navbar = () => {
         </div>
         <button
           onClick={() => setDark(!dark)}
-          className="p-2 rounded-full hover:bg-secondary transition-colors"
+          className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors"
         >
-          {dark ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-muted-foreground" />}
+          {dark ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-foreground" />}
         </button>
+        <Link to="/profile" className="ml-1">
+          <img src={profileImg} alt="Profile" className="w-10 h-10 rounded-full object-cover border-2 border-transparent hover:border-primary transition-colors" />
+        </Link>
       </div>
     </nav>
   );
