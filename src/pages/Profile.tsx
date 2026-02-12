@@ -32,11 +32,12 @@ const Profile = () => {
   const [posts, setPosts] = useState<Post[]>([
     {
       id: "profile-1",
-      type: "activity",
+      type: "image",
       author: "Shiva Raj Lamsal",
       avatar: "",
       time: "Recently",
       text: "Shiva Raj Lamsal updated his profile picture.",
+      image: profileImg,
       likes: 12,
       comments: [],
     },
