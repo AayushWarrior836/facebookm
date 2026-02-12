@@ -75,8 +75,8 @@ const PostCard = ({ post }: { post: Post }) => {
       )}
 
       {/* Activity */}
-      {post.type === "activity" && (
-        <p className="px-3 pb-2 text-sm text-muted-foreground">{post.activityText}</p>
+      {post.activityText && (
+        <p className="px-3 pb-2 text-[14px] sm:text-[15px]">{post.activityText}</p>
       )}
 
       {/* Text */}
