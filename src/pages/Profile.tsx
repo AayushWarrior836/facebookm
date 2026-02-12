@@ -36,7 +36,7 @@ const Profile = () => {
       author: "Shiva Raj Lamsal",
       avatar: "",
       time: "Recently",
-      text: "Shiva Raj Lamsal updated his profile picture.",
+      activityText: "Shiva Raj Lamsal updated his profile picture.",
       image: profileImg,
       likes: 12,
       comments: [],
