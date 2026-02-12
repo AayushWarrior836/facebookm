@@ -159,23 +159,19 @@ const Profile = () => {
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
                       <Briefcase className="w-5 h-5 text-muted-foreground shrink-0" />
-                      <p className="text-[14px] text-foreground">Passionate about React, AI, and open source</p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <GraduationCap className="w-5 h-5 text-muted-foreground shrink-0" />
-                      <p className="text-[14px] text-foreground">Self-taught developer from Nepal</p>
+                      <p className="text-[14px] text-foreground">Digital creator</p>
                     </div>
                     <div className="flex items-center gap-3">
                       <MapPin className="w-5 h-5 text-muted-foreground shrink-0" />
-                      <p className="text-[14px] text-foreground">Lives in <span className="font-medium">Kawasoti, Nawalparasi</span></p>
+                      <p className="text-[14px] text-foreground">Lives in <span className="font-medium">Kawasoti, Nawalpur</span></p>
                     </div>
                     <div className="flex items-center gap-3">
                       <Heart className="w-5 h-5 text-muted-foreground shrink-0" />
-                      <p className="text-[14px] text-foreground">Single</p>
+                      <p className="text-[14px] text-foreground">Married</p>
                     </div>
                     <div className="flex items-center gap-3">
                       <Clock className="w-5 h-5 text-muted-foreground shrink-0" />
-                      <p className="text-[14px] text-foreground">Joined September 2020</p>
+                      <p className="text-[14px] text-foreground">Joined 1 year ago</p>
                     </div>
                   </div>
                   <button className="w-full py-2 mt-3 rounded-md bg-secondary text-[13px] font-semibold text-foreground hover:bg-muted transition-colors">
@@ -240,11 +236,10 @@ const Profile = () => {
               <h2 className="font-bold text-xl text-foreground">About</h2>
               <div className="space-y-2">
                 {[
-                  { icon: GraduationCap, title: "Self-taught developer from Nepal", sub: "Education" },
-                  { icon: Briefcase, title: "Passionate about React, AI, and open source", sub: "Work" },
-                  { icon: MapPin, title: "Lives in Kawasoti, Nawalparasi", sub: "Location" },
-                  { icon: Heart, title: "Single", sub: "Relationship" },
-                  { icon: Clock, title: "Joined September 2020", sub: "Joined" },
+                  { icon: Briefcase, title: "Digital creator", sub: "Work" },
+                  { icon: MapPin, title: "Lives in Kawasoti, Nawalpur", sub: "Location" },
+                  { icon: Heart, title: "Married", sub: "Relationship" },
+                  { icon: Clock, title: "Joined 1 year ago", sub: "Joined" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary transition-colors">
                     <item.icon className="w-5 h-5 text-muted-foreground" />
