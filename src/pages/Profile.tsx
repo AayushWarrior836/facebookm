@@ -8,14 +8,12 @@ import { dummyPosts, type Post } from "@/data/posts";
 import profileImg from "@/assets/profile-shiva.jpg";
 
 const friends = [
-  { name: "Ramesh Tamang", img: "https://i.pravatar.cc/150?img=11" },
-  { name: "Anita Sharma", img: "https://i.pravatar.cc/150?img=5" },
-  { name: "Priya Adhikari", img: "https://i.pravatar.cc/150?img=9" },
-  { name: "Sabin Karki", img: "https://i.pravatar.cc/150?img=12" },
-  { name: "Manisha Poudel", img: "https://i.pravatar.cc/150?img=23" },
-  { name: "Bikash KC", img: "https://i.pravatar.cc/150?img=15" },
-  { name: "Sita Gurung", img: "https://i.pravatar.cc/150?img=20" },
-  { name: "Dev Bhandari", img: "https://i.pravatar.cc/150?img=33" },
+  { name: "Aayush Lamsal", img: "" },
+  { name: "Anusha Lamsal", img: "" },
+  { name: "Amrita Lamsal", img: "" },
+  { name: "Asmita Lamsal", img: "" },
+  { name: "Govinda Lamsal", img: "" },
+  { name: "Being Santosh", img: "" },
 ];
 
 const photos = [
@@ -112,12 +110,12 @@ const Profile = () => {
               {/* Friend avatars row */}
               <div className="flex justify-center md:justify-start -space-x-1.5 mt-1.5">
                 {friends.slice(0, 6).map((f) => (
-                  <img
+                  <div
                     key={f.name}
-                    src={f.img}
-                    alt={f.name}
-                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-card object-cover"
-                  />
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-card bg-gradient-to-br from-primary/30 to-primary/60 flex items-center justify-center text-[10px] font-semibold text-primary-foreground"
+                  >
+                    {f.name.split(" ").map((w) => w[0]).join("")}
+                  </div>
                 ))}
               </div>
             </div>
@@ -211,11 +209,9 @@ const Profile = () => {
                   <div className="grid grid-cols-3 gap-2">
                     {friends.slice(0, 6).map((f) => (
                       <div key={f.name} className="cursor-pointer">
-                        <img
-                          src={f.img}
-                          alt={f.name}
-                          className="w-full aspect-square rounded-lg object-cover"
-                        />
+                        <div className="w-full aspect-square rounded-lg bg-gradient-to-br from-primary/30 to-primary/60 flex items-center justify-center text-2xl font-bold text-primary-foreground">
+                          {f.name.split(" ").map((w) => w[0]).join("")}
+                        </div>
                         <p className="text-[12px] font-medium mt-1 truncate text-foreground">{f.name}</p>
                       </div>
                     ))}
@@ -282,7 +278,9 @@ const Profile = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {friends.map((f) => (
                   <div key={f.name} className="flex items-center gap-3 p-2.5 rounded-lg border hover:bg-secondary transition-colors">
-                    <img src={f.img} alt={f.name} className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg object-cover shrink-0" />
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg bg-gradient-to-br from-primary/30 to-primary/60 flex items-center justify-center text-xl font-bold text-primary-foreground shrink-0">
+                      {f.name.split(" ").map((w) => w[0]).join("")}
+                    </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-semibold text-[14px] truncate text-foreground">{f.name}</p>
                       <p className="text-xs text-muted-foreground">3 mutual friends</p>
