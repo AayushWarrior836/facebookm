@@ -29,7 +29,28 @@ const photos = [
 
 const Profile = () => {
   const [tab, setTab] = useState<"posts" | "about" | "friends" | "photos">("posts");
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Post[]>([
+    {
+      id: "profile-1",
+      type: "activity",
+      author: "Shiva Raj Lamsal",
+      avatar: "",
+      time: "Recently",
+      text: "Shiva Raj Lamsal updated his profile picture.",
+      likes: 12,
+      comments: [],
+    },
+    {
+      id: "profile-2",
+      type: "life-update",
+      author: "Shiva Raj Lamsal",
+      avatar: "",
+      time: "Born on 21 September 1972",
+      text: "🎂 Born on 21 September 1972",
+      likes: 25,
+      comments: [],
+    },
+  ]);
 
   const handleNewPost = (post: Post) => setPosts((prev) => [post, ...prev]);
 
