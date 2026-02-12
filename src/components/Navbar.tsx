@@ -23,6 +23,15 @@ const Navbar = () => {
 
   const navItems = [
     { icon: Home, path: "/", label: "Home" },
+    { icon: Users, path: "#", label: "Friends" },
+    { icon: Tv, path: "#", label: "Watch" },
+    { icon: Store, path: "#", label: "Marketplace" },
+    { icon: Bell, path: "#notif", label: "Notifications" },
+    { icon: Menu, path: "#menu", label: "Menu" },
+  ];
+
+  const desktopNavItems = [
+    { icon: Home, path: "/", label: "Home" },
     { icon: Tv, path: "#", label: "Watch" },
     { icon: Store, path: "#", label: "Marketplace" },
     { icon: Users, path: "#", label: "Groups" },
@@ -31,21 +40,31 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-40 flex items-center justify-between h-14 px-2 sm:px-4 bg-card shadow-sm">
-        {/* Left: Logo + Search */}
-        <div className="flex items-center gap-1 sm:gap-2">
+      {/* Mobile top bar - Facebook style */}
+      <nav className="md:hidden sticky top-0 z-40 flex items-center justify-between h-12 px-3 bg-card shadow-sm">
+        <Link to="/" className="flex items-center shrink-0">
+          <span className="text-primary font-bold text-[26px] leading-none" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>facebook</span>
+        </Link>
+        <div className="flex items-center gap-1.5">
+          <button
+            onClick={() => setShowSearch(!showSearch)}
+            className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center"
+          >
+            <Search className="w-[18px] h-[18px] text-foreground" />
+          </button>
+          <button className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center">
+            <MessageCircle className="w-[18px] h-[18px] text-foreground" />
+          </button>
+        </div>
+      </nav>
+
+      {/* Desktop top bar */}
+      <nav className="hidden md:flex sticky top-0 z-40 items-center justify-between h-14 px-4 bg-card shadow-sm">
+        <div className="flex items-center gap-2">
           <Link to="/" className="flex items-center shrink-0">
             <img src="/facebook-logo.png" alt="Facebook" className="h-10 object-contain" />
           </Link>
-          {/* Mobile search icon */}
-          <button
-            onClick={() => setShowSearch(!showSearch)}
-            className="md:hidden w-9 h-9 rounded-full bg-secondary flex items-center justify-center"
-          >
-            <Search className="w-4 h-4 text-muted-foreground" />
-          </button>
-          {/* Desktop search */}
-          <div className="relative hidden md:block">
+          <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <input
               placeholder="Search Facebook"
@@ -54,18 +73,15 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Center: Navigation Icons (desktop only) */}
-        <div className="hidden md:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
-          {navItems.map((item) => {
+        <div className="flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
+          {desktopNavItems.map((item) => {
             const isActive = item.path !== "#" && location.pathname === item.path;
             return (
               <Link
                 key={item.label}
                 to={item.path}
                 className={`relative flex items-center justify-center w-24 h-12 rounded-lg transition-colors group ${
-                  isActive
-                    ? "text-primary"
-                    : "text-muted-foreground hover:bg-secondary"
+                  isActive ? "text-primary" : "text-muted-foreground hover:bg-secondary"
                 }`}
                 title={item.label}
               >
@@ -78,30 +94,22 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* Right: Action Icons */}
         <div className="flex items-center gap-1">
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setShowMobileMenu(!showMobileMenu)}
-            className="md:hidden w-9 h-9 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors"
-          >
-            <Menu className="w-5 h-5 text-foreground" />
-          </button>
-          <button className="hidden sm:flex w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-secondary items-center justify-center hover:bg-muted transition-colors">
+          <button className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors">
             <MessageCircle className="w-5 h-5 text-foreground" />
           </button>
           <div className="relative">
             <button
               onClick={() => setShowNotifs(!showNotifs)}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors relative"
+              className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors relative"
             >
               <Bell className="w-5 h-5 text-foreground" />
-              <span className="absolute top-0 right-0 sm:top-1 sm:right-1 w-4 h-4 bg-destructive rounded-full text-[10px] text-destructive-foreground flex items-center justify-center font-bold">3</span>
+              <span className="absolute top-1 right-1 w-4 h-4 bg-destructive rounded-full text-[10px] text-destructive-foreground flex items-center justify-center font-bold">3</span>
             </button>
             {showNotifs && (
               <>
-                <div className="fixed inset-0 z-40 md:hidden" onClick={() => setShowNotifs(false)} />
-                <div className="fixed inset-x-2 top-16 z-50 md:absolute md:inset-x-auto md:right-0 md:top-12 md:w-80 bg-card rounded-lg shadow-xl border p-4 animate-scale-in">
+                <div className="fixed inset-0 z-40" onClick={() => setShowNotifs(false)} />
+                <div className="absolute right-0 top-12 w-80 z-50 bg-card rounded-lg shadow-xl border p-4 animate-scale-in">
                   <h3 className="font-bold text-xl mb-3">Notifications</h3>
                   {notifications.map((n) => (
                     <div
@@ -126,12 +134,12 @@ const Navbar = () => {
           </div>
           <button
             onClick={() => setDark(!dark)}
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors"
+            className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors"
           >
             {dark ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-foreground" />}
           </button>
-          <Link to="/profile" className="ml-0.5 sm:ml-1 shrink-0">
-            <img src={profileImg} alt="Profile" className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover border-2 border-transparent hover:border-primary transition-colors" />
+          <Link to="/profile" className="ml-1 shrink-0">
+            <img src={profileImg} alt="Profile" className="w-10 h-10 rounded-full object-cover border-2 border-transparent hover:border-primary transition-colors" />
           </Link>
         </div>
       </nav>
@@ -155,10 +163,40 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Mobile bottom navigation */}
+      {/* Mobile bottom navigation - Facebook app style tabs */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-card border-t flex items-center justify-around h-12">
-        {navItems.slice(0, 5).map((item) => {
-          const isActive = item.path !== "#" && location.pathname === item.path;
+        {navItems.map((item) => {
+          const isActive = item.path !== "#" && item.path !== "#notif" && item.path !== "#menu" && location.pathname === item.path;
+          const isNotif = item.path === "#notif";
+          const isMenu = item.path === "#menu";
+
+          const handleClick = () => {
+            if (isNotif) {
+              setShowNotifs(!showNotifs);
+              setShowMobileMenu(false);
+            } else if (isMenu) {
+              setShowMobileMenu(!showMobileMenu);
+              setShowNotifs(false);
+            }
+          };
+
+          if (isNotif || isMenu) {
+            return (
+              <button
+                key={item.label}
+                onClick={handleClick}
+                className={`relative flex items-center justify-center w-full h-full transition-colors ${
+                  (isNotif && showNotifs) || (isMenu && showMobileMenu) ? "text-primary" : "text-muted-foreground"
+                }`}
+              >
+                <item.icon className="w-6 h-6" />
+                {isNotif && (
+                  <span className="absolute top-1 right-1/2 translate-x-3 w-4 h-4 bg-destructive rounded-full text-[10px] text-destructive-foreground flex items-center justify-center font-bold">3</span>
+                )}
+              </button>
+            );
+          }
+
           return (
             <Link
               key={item.label}
@@ -176,7 +214,34 @@ const Navbar = () => {
         })}
       </div>
 
-      {/* Mobile sidebar drawer */}
+      {/* Mobile notifications panel */}
+      {showNotifs && (
+        <>
+          <div className="fixed inset-0 z-40 md:hidden" onClick={() => setShowNotifs(false)} />
+          <div className="fixed inset-x-2 bottom-14 z-50 md:hidden bg-card rounded-lg shadow-xl border p-4 animate-scale-in max-h-[60vh] overflow-y-auto">
+            <h3 className="font-bold text-xl mb-3">Notifications</h3>
+            {notifications.map((n) => (
+              <div
+                key={n.id}
+                className={`flex items-start gap-3 p-2 rounded-lg text-sm mb-1 cursor-pointer hover:bg-secondary transition-colors ${
+                  n.read ? "text-muted-foreground" : "bg-accent/50"
+                }`}
+              >
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <Bell className="w-4 h-4 text-primary" />
+                </div>
+                <div className="min-w-0">
+                  <p className={`${n.read ? "" : "font-medium"} break-words`}>{n.text}</p>
+                  <span className="text-xs text-primary">{n.time}</span>
+                </div>
+                {!n.read && <span className="w-3 h-3 rounded-full bg-primary shrink-0 mt-1" />}
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* Mobile menu drawer */}
       {showMobileMenu && (
         <>
           <div className="fixed inset-0 z-40 bg-black/50 md:hidden animate-fade-in" onClick={() => setShowMobileMenu(false)} />
