@@ -106,7 +106,7 @@ const Profile = () => {
             {/* Name & friends count */}
             <div className="text-center md:text-left flex-1 mt-2 md:mt-0 md:pb-3">
               <h1 className="text-[22px] sm:text-[32px] font-bold leading-tight text-foreground">Shiva Raj Lamsal</h1>
-              <p className="text-muted-foreground text-[13px] sm:text-[15px]">502 friends</p>
+              <p className="text-muted-foreground text-[13px] sm:text-[15px]">25 friends</p>
               {/* Friend avatars row */}
               <div className="flex justify-center md:justify-start -space-x-1.5 mt-1.5">
                 {friends.slice(0, 6).map((f) => (
@@ -202,7 +202,7 @@ const Profile = () => {
                   <div className="flex items-center justify-between mb-3">
                     <div>
                       <h2 className="font-bold text-[18px] text-foreground">Friends</h2>
-                      <p className="text-[13px] text-muted-foreground">502 friends</p>
+                      <p className="text-[13px] text-muted-foreground">25 friends</p>
                     </div>
                     <button className="text-primary text-[14px] font-medium">See all</button>
                   </div>
