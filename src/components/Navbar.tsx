@@ -18,16 +18,16 @@ const Navbar = () => {
         <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center">
           <span className="text-primary-foreground font-bold text-xl" style={{ fontFamily: "Georgia, serif" }}>f</span>
         </div>
-        <span className="hidden md:inline text-xl font-bold text-primary">ConnectBook</span>
+        <span className="hidden md:inline text-xl font-bold text-primary">Facebook</span>
       </Link>
 
       <div className="flex-1 max-w-md mx-4">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <input
-            placeholder="Search ConnectBook"
-            className="w-full pl-10 pr-4 py-2 rounded-full bg-secondary text-foreground text-sm outline-none focus:ring-2 focus:ring-primary/30"
-          />
+           <input
+             placeholder="Search Facebook"
+             className="w-full pl-10 pr-4 py-2 rounded-full bg-secondary text-foreground text-sm outline-none focus:ring-2 focus:ring-primary/30"
+           />
         </div>
       </div>
 
