@@ -40,14 +40,14 @@ const PostCard = ({ post }: { post: Post }) => {
   const totalVotes = post.pollOptions?.reduce((s, o) => s + o.votes, 0) || 1;
 
   return (
-    <div className="bg-card rounded-lg shadow-sm border">
+    <div className="bg-card sm:rounded-lg shadow-sm sm:border">
       {/* Header */}
       <div className="flex items-start justify-between p-3 pb-1">
         <div className="flex items-center gap-2">
           <AvatarCircle author={post.author} />
           <div>
-            <p className="font-semibold text-[15px] hover:underline cursor-pointer">{post.author}</p>
-            <div className="flex items-center gap-1 text-xs text-muted-foreground">
+            <p className="font-semibold text-[14px] sm:text-[15px] hover:underline cursor-pointer">{post.author}</p>
+            <div className="flex items-center gap-1 text-[11px] sm:text-xs text-muted-foreground">
               <span>{post.time}</span>
               <span>·</span>
               <Globe className="w-3 h-3" />
@@ -55,13 +55,13 @@ const PostCard = ({ post }: { post: Post }) => {
                 <>
                   <span>·</span>
                   <MapPin className="w-3 h-3" />
-                  <span className="font-medium text-foreground">{post.location}</span>
+                  <span className="font-medium text-foreground truncate max-w-[120px]">{post.location}</span>
                 </>
               )}
             </div>
           </div>
         </div>
-        <button className="p-2 rounded-full hover:bg-secondary transition-colors">
+        <button className="p-1.5 sm:p-2 rounded-full hover:bg-secondary transition-colors">
           <MoreHorizontal className="w-5 h-5 text-muted-foreground" />
         </button>
       </div>
@@ -81,26 +81,26 @@ const PostCard = ({ post }: { post: Post }) => {
 
       {/* Text */}
       {post.text && (
-        <p className={`px-3 pb-2 ${post.type === "text" && !post.image ? "text-2xl py-4" : "text-[15px]"}`}>
+        <p className={`px-3 pb-2 ${post.type === "text" && !post.image ? "text-xl sm:text-2xl py-3 sm:py-4" : "text-[14px] sm:text-[15px]"}`}>
           {post.text}
         </p>
       )}
 
       {/* Single image */}
       {post.type === "image" && post.image && (
-        <img src={post.image} alt="post" className="w-full max-h-[500px] object-cover cursor-pointer" />
+        <img src={post.image} alt="post" className="w-full max-h-[400px] sm:max-h-[500px] object-cover cursor-pointer" />
       )}
 
       {/* Multi images */}
       {post.type === "images" && post.images && (
-        <div className={`grid gap-1 ${post.images.length === 2 ? "grid-cols-2" : post.images.length === 3 ? "grid-cols-2" : "grid-cols-2"}`}>
+        <div className={`grid gap-0.5 sm:gap-1 grid-cols-2`}>
           {post.images.map((img, i) => (
             <img
               key={i}
               src={img}
               alt={`post-${i}`}
               className={`w-full object-cover cursor-pointer ${
-                post.images!.length === 3 && i === 0 ? "row-span-2 h-full" : "h-60"
+                post.images!.length === 3 && i === 0 ? "row-span-2 h-full" : "h-40 sm:h-60"
               }`}
             />
           ))}
@@ -110,10 +110,10 @@ const PostCard = ({ post }: { post: Post }) => {
       {/* Video */}
       {post.type === "video" && post.videoThumb && (
         <div className="relative cursor-pointer group">
-          <img src={post.videoThumb} alt="video" className="w-full max-h-[500px] object-cover" />
+          <img src={post.videoThumb} alt="video" className="w-full max-h-[400px] sm:max-h-[500px] object-cover" />
           <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
-            <div className="w-16 h-16 rounded-full bg-black/60 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Play className="w-8 h-8 text-white fill-white ml-1" />
+            <div className="w-14 sm:w-16 h-14 sm:h-16 rounded-full bg-black/60 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Play className="w-7 sm:w-8 h-7 sm:h-8 text-white fill-white ml-1" />
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@ const PostCard = ({ post }: { post: Post }) => {
 
       {/* Memory image */}
       {post.type === "memory" && post.memoryImage && (
-        <img src={post.memoryImage} alt="memory" className="w-full max-h-[500px] object-cover" />
+        <img src={post.memoryImage} alt="memory" className="w-full max-h-[400px] sm:max-h-[500px] object-cover" />
       )}
 
       {/* Poll */}
@@ -134,7 +134,7 @@ const PostCard = ({ post }: { post: Post }) => {
               <button
                 key={i}
                 onClick={() => setPollVoted(i)}
-                className={`w-full text-left rounded-lg border p-3 relative overflow-hidden transition-all ${
+                className={`w-full text-left rounded-lg border p-2.5 sm:p-3 relative overflow-hidden transition-all ${
                   isVoted ? "border-primary bg-primary/5" : "hover:bg-secondary"
                 }`}
               >
@@ -158,17 +158,17 @@ const PostCard = ({ post }: { post: Post }) => {
       {/* Link preview */}
       {post.type === "link" && post.linkPreview && (
         <div className="border-t border-b bg-secondary/30 cursor-pointer hover:bg-secondary/50 transition-colors">
-          <img src={post.linkPreview.image} alt={post.linkPreview.title} className="w-full h-52 object-cover" />
+          <img src={post.linkPreview.image} alt={post.linkPreview.title} className="w-full h-40 sm:h-52 object-cover" />
           <div className="p-3">
             <p className="text-xs text-muted-foreground uppercase tracking-wide">{post.linkPreview.site}</p>
-            <p className="font-semibold text-[15px] mt-0.5">{post.linkPreview.title}</p>
-            <p className="text-sm text-muted-foreground mt-0.5">{post.linkPreview.description}</p>
+            <p className="font-semibold text-[14px] sm:text-[15px] mt-0.5">{post.linkPreview.title}</p>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 line-clamp-2">{post.linkPreview.description}</p>
           </div>
         </div>
       )}
 
       {/* Like count + comment count */}
-      <div className="flex items-center justify-between px-3 py-2 text-muted-foreground text-sm">
+      <div className="flex items-center justify-between px-3 py-2 text-muted-foreground text-xs sm:text-sm">
         <div className="flex items-center gap-1 cursor-pointer hover:underline">
           {likeCount > 0 && (
             <>
@@ -197,22 +197,22 @@ const PostCard = ({ post }: { post: Post }) => {
       <div className="flex items-center border-t border-b mx-3 py-1">
         <button
           onClick={handleLike}
-          className={`flex-1 flex items-center justify-center gap-2 py-1.5 rounded-lg text-sm font-medium transition-colors hover:bg-secondary ${
+          className={`flex-1 flex items-center justify-center gap-1.5 sm:gap-2 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors hover:bg-secondary ${
             liked ? "text-primary" : "text-muted-foreground"
           }`}
         >
-          <ThumbsUp className={`w-5 h-5 ${animateLike ? "animate-like-pop" : ""} ${liked ? "fill-primary" : ""}`} />
+          <ThumbsUp className={`w-4 sm:w-5 h-4 sm:h-5 ${animateLike ? "animate-like-pop" : ""} ${liked ? "fill-primary" : ""}`} />
           Like
         </button>
         <button
           onClick={() => setShowComments(!showComments)}
-          className="flex-1 flex items-center justify-center gap-2 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors"
+          className="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors"
         >
-          <MessageCircle className="w-5 h-5" />
+          <MessageCircle className="w-4 sm:w-5 h-4 sm:h-5" />
           Comment
         </button>
-        <button className="flex-1 flex items-center justify-center gap-2 py-1.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">
-          <Share2 className="w-5 h-5" />
+        <button className="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">
+          <Share2 className="w-4 sm:w-5 h-4 sm:h-5" />
           Share
         </button>
       </div>
@@ -223,10 +223,10 @@ const PostCard = ({ post }: { post: Post }) => {
           {post.comments.map((c) => (
             <div key={c.id} className="flex gap-2">
               <AvatarCircle author={c.author} size="w-8 h-8" />
-              <div>
+              <div className="min-w-0">
                 <div className="bg-secondary rounded-2xl px-3 py-2">
                   <p className="text-[13px] font-semibold hover:underline cursor-pointer">{c.author}</p>
-                  <p className="text-[13px]">{c.text}</p>
+                  <p className="text-[13px] break-words">{c.text}</p>
                 </div>
                 <div className="flex gap-3 mt-0.5 ml-3 text-xs text-muted-foreground">
                   <span>{c.time}</span>
@@ -243,7 +243,7 @@ const PostCard = ({ post }: { post: Post }) => {
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
               placeholder="Write a comment..."
-              className="flex-1 bg-secondary rounded-full px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/30"
+              className="flex-1 bg-secondary rounded-full px-3 sm:px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/30 min-w-0"
             />
           </div>
         </div>

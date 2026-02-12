@@ -15,11 +15,11 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-14 md:pb-0">
       <Navbar />
       <div className="flex justify-center">
         <LeftSidebar />
-        <main className="flex-1 max-w-[590px] min-w-0 py-4 px-4 space-y-4">
+        <main className="flex-1 max-w-[590px] min-w-0 py-2 sm:py-4 px-0 sm:px-4 space-y-2 sm:space-y-4">
           <Stories />
           <CreatePost onPost={handleNewPost} />
           {posts.map((post) => (
