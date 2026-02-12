@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import LeftSidebar from "@/components/LeftSidebar";
 import RightSidebar from "@/components/RightSidebar";
 import CreatePost from "@/components/CreatePost";
+import Stories from "@/components/Stories";
 import PostCard from "@/components/PostCard";
 import { dummyPosts, type Post } from "@/data/posts";
 
@@ -16,9 +17,10 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="flex max-w-7xl mx-auto">
+      <div className="flex justify-center">
         <LeftSidebar />
-        <main className="flex-1 min-w-0 p-4 space-y-4">
+        <main className="flex-1 max-w-[590px] min-w-0 py-4 px-4 space-y-4">
+          <Stories />
           <CreatePost onPost={handleNewPost} />
           {posts.map((post) => (
             <PostCard key={post.id} post={post} />
