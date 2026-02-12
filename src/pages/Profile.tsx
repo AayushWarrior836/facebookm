@@ -29,9 +29,7 @@ const photos = [
 
 const Profile = () => {
   const [tab, setTab] = useState<"posts" | "about" | "friends" | "photos">("posts");
-  const [posts, setPosts] = useState<Post[]>(
-    dummyPosts.filter((p) => p.author === "Shiva Raj Lamsal")
-  );
+  const [posts, setPosts] = useState<Post[]>([]);
 
   const handleNewPost = (post: Post) => setPosts((prev) => [post, ...prev]);
 
