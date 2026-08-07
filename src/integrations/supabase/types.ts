@@ -14,7 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      episodes: {
+        Row: {
+          cast_members: Json
+          channel: string
+          comments_count: number
+          created_at: string
+          description: string
+          duration: string
+          episode_number: number
+          id: string
+          likes: number
+          published_at: string
+          series: string
+          thumbnail_url: string | null
+          title: string
+          views: string
+          youtube_id: string
+        }
+        Insert: {
+          cast_members?: Json
+          channel?: string
+          comments_count?: number
+          created_at?: string
+          description?: string
+          duration?: string
+          episode_number: number
+          id?: string
+          likes?: number
+          published_at?: string
+          series: string
+          thumbnail_url?: string | null
+          title: string
+          views?: string
+          youtube_id: string
+        }
+        Update: {
+          cast_members?: Json
+          channel?: string
+          comments_count?: number
+          created_at?: string
+          description?: string
+          duration?: string
+          episode_number?: number
+          id?: string
+          likes?: number
+          published_at?: string
+          series?: string
+          thumbnail_url?: string | null
+          title?: string
+          views?: string
+          youtube_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
