@@ -1,3 +1,8 @@
+import ram1 from "@/assets/watch-ramayana-1.jpg";
+import ram2 from "@/assets/watch-ramayana-2.jpg";
+import mah1 from "@/assets/watch-mahabharat-1.jpg";
+import mah2 from "@/assets/watch-mahabharat-2.jpg";
+
 export interface Video {
   id: string;
   channel: string;
@@ -11,10 +16,156 @@ export interface Video {
   category: string;
 }
 
-export const watchCategories = ["Technology", "Gaming", "Education", "Sports", "Music"];
+export const watchCategories = ["Ramayana", "Mahabharat", "Technology", "Gaming", "Education", "Sports", "Music"];
 
 export const videos: Video[] = [
+
+  // ---- Ramayana ----
   {
+    id: "r1",
+    channel: "Laxmi Poudel",
+    time: "1 hour ago",
+    title: "Ramayana — Episode 1: Bal Kanda, the birth of Lord Ram in Ayodhya",
+    thumb: ram1,
+    duration: "42:15",
+    views: "1.2M views",
+    likes: 84200,
+    comments: 5120,
+    category: "Ramayana",
+  },
+  {
+    id: "r2",
+    channel: "Kamal Poudel",
+    time: "6 hours ago",
+    title: "Sita Swayamvar — Lord Ram breaks the Shiva Dhanush",
+    thumb: ram1,
+    duration: "36:48",
+    views: "870K views",
+    likes: 61400,
+    comments: 3890,
+    category: "Ramayana",
+  },
+  {
+    id: "r3",
+    channel: "Ramesh Sigdel",
+    time: "1 day ago",
+    title: "Ram Vanvas — fourteen years of exile begins",
+    thumb: ram1,
+    duration: "39:02",
+    views: "654K views",
+    likes: 47800,
+    comments: 2760,
+    category: "Ramayana",
+  },
+  {
+    id: "r4",
+    channel: "Dip",
+    time: "2 days ago",
+    title: "Hanuman Ji burns Lanka — Sundar Kanda retold",
+    thumb: ram2,
+    duration: "45:30",
+    views: "2.1M views",
+    likes: 152000,
+    comments: 9840,
+    category: "Ramayana",
+  },
+  {
+    id: "r5",
+    channel: "Prerana Poudel",
+    time: "3 days ago",
+    title: "Ram vs Ravan — the final battle of Lanka",
+    thumb: ram2,
+    duration: "51:07",
+    views: "3.4M views",
+    likes: 241000,
+    comments: 15200,
+    category: "Ramayana",
+  },
+  {
+    id: "r6",
+    channel: "Sabina Poudel",
+    time: "5 days ago",
+    title: "Sundarkanda Path with Nepali meaning — full recitation",
+    thumb: ram2,
+    duration: "1:12:44",
+    views: "420K views",
+    likes: 33100,
+    comments: 1980,
+    category: "Ramayana",
+  },
+  // ---- Mahabharat ----
+  {
+    id: "m1",
+    channel: "Anish Sigdel",
+    time: "3 hours ago",
+    title: "Mahabharat — Episode 1: The story of Hastinapur begins",
+    thumb: mah1,
+    duration: "44:20",
+    views: "1.6M views",
+    likes: 98700,
+    comments: 6420,
+    category: "Mahabharat",
+  },
+  {
+    id: "m2",
+    channel: "Sujan Devkota",
+    time: "8 hours ago",
+    title: "Draupadi Cheer Haran — the vow that changed everything",
+    thumb: mah1,
+    duration: "38:55",
+    views: "2.8M views",
+    likes: 187000,
+    comments: 12400,
+    category: "Mahabharat",
+  },
+  {
+    id: "m3",
+    channel: "Kiran Lamsal",
+    time: "1 day ago",
+    title: "Shri Krishna's Geeta Updesh at Kurukshetra — Chapter 2",
+    thumb: mah1,
+    duration: "48:12",
+    views: "4.1M views",
+    likes: 312000,
+    comments: 21800,
+    category: "Mahabharat",
+  },
+  {
+    id: "m4",
+    channel: "Suraj Sapkota",
+    time: "2 days ago",
+    title: "Arjun vs Karna — the greatest duel of Kurukshetra",
+    thumb: mah2,
+    duration: "40:36",
+    views: "2.3M views",
+    likes: 164000,
+    comments: 10700,
+    category: "Mahabharat",
+  },
+  {
+    id: "m5",
+    channel: "Ritu Lamsal",
+    time: "4 days ago",
+    title: "Bhishma Pitamah on the bed of arrows — Shar Shayya",
+    thumb: mah2,
+    duration: "35:18",
+    views: "980K views",
+    likes: 72500,
+    comments: 4310,
+    category: "Mahabharat",
+  },
+  {
+    id: "m6",
+    channel: "Aarati Sapkota",
+    time: "6 days ago",
+    title: "Bhagavad Gita saar in Nepali — lessons for daily life",
+    thumb: mah2,
+    duration: "27:40",
+    views: "530K views",
+    likes: 41200,
+    comments: 2650,
+    category: "Mahabharat",
+  },  {
     id: "v1",
     channel: "Dip",
     time: "2 hours ago",
