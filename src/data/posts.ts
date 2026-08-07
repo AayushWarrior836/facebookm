@@ -1,3 +1,5 @@
+import { friends, communityUsers } from "./people";
+
 export interface Comment {
   id: string;
   author: string;
@@ -36,63 +38,65 @@ export const dummyPosts: Post[] = [
   {
     id: "1",
     type: "text",
-    author: "Shiva Raj Lamsal",
+    author: "Laxmi Poudel",
     avatar: "",
     time: "2 hours ago",
     text: "\"The only way to do great work is to love what you do.\" — Steve Jobs 💡",
     likes: 24,
     comments: [
-      { id: "c1", author: "Anita Sharma", avatar: "", text: "So true! 🙌", time: "1h ago" },
+      { id: "c1", author: "Anusha Lamsal", avatar: "", text: "So true! 🙌", time: "1h ago" },
     ],
   },
   {
     id: "2",
     type: "image",
-    author: "Ramesh Tamang",
+    author: "Ramesh Sigdel",
     avatar: "",
     time: "3 hours ago",
     text: "Beautiful sunset from Pokhara lakeside 🌅",
     image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600",
+    location: "Pokhara",
     likes: 58,
     comments: [
-      { id: "c2", author: "Sita Gurung", avatar: "", text: "Stunning view!", time: "2h ago" },
+      { id: "c2", author: "Govinda Lamsal", avatar: "", text: "Stunning view!", time: "2h ago" },
     ],
   },
   {
     id: "3",
     type: "images",
-    author: "Priya Adhikari",
+    author: "Sabina Poudel",
     avatar: "",
     time: "5 hours ago",
-    text: "Weekend trip to Nagarkot! 🏔️",
+    text: "Weekend trip around Chitwan! 🏞️",
     images: [
       "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400",
       "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400",
       "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=400",
       "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=400",
     ],
+    location: "Chitwan",
     likes: 92,
     comments: [
-      { id: "c3", author: "Bikash KC", avatar: "", text: "Take me next time!", time: "4h ago" },
+      { id: "c3", author: "Aayush Lamsal", avatar: "", text: "Take me next time!", time: "4h ago" },
     ],
   },
   {
     id: "4",
     type: "video",
-    author: "Tech Nepal",
+    author: "Dip",
     avatar: "",
     time: "6 hours ago",
     text: "How to build your first React app — Full tutorial 🎬",
     videoThumb: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600",
     likes: 134,
     comments: [
-      { id: "c4", author: "Dev Bhandari", avatar: "", text: "Great content!", time: "5h ago" },
+      { id: "c4", author: "Being Santosh", avatar: "", text: "Great content!", time: "5h ago" },
     ],
   },
   {
     id: "5",
     type: "poll",
-    author: "Shiva Raj Lamsal",
+    author: "Kiran Lamsal",
     avatar: "",
     time: "8 hours ago",
     text: "What should I learn next? 🤔",
@@ -104,26 +108,26 @@ export const dummyPosts: Post[] = [
     ],
     likes: 67,
     comments: [
-      { id: "c5", author: "Hari Bahadur", avatar: "", text: "React is king!", time: "7h ago" },
+      { id: "c5", author: "Amrita Lamsal", avatar: "", text: "React is king!", time: "7h ago" },
     ],
   },
   {
     id: "6",
     type: "life-update",
-    author: "Shiva Raj Lamsal",
+    author: "Aarati Sapkota",
     avatar: "",
     time: "1 day ago",
-    text: "🎉 Started building my new project today! Excited for what's coming.",
+    text: "🎉 Started my new job in Bharatpur today! Excited for what's coming.",
     likes: 112,
     comments: [
-      { id: "c6", author: "Manisha Poudel", avatar: "", text: "Good luck! 🚀", time: "23h ago" },
-      { id: "c6b", author: "Rajan Shrestha", avatar: "", text: "Can't wait to see it!", time: "22h ago" },
+      { id: "c6", author: "Asmita Lamsal", avatar: "", text: "Congratulations! 🚀", time: "23h ago" },
+      { id: "c6b", author: "Shiva Raj Lamsal", avatar: "", text: "Well deserved!", time: "22h ago" },
     ],
   },
   {
     id: "7",
     type: "link",
-    author: "Sabin Karki",
+    author: "Prakash Devkota",
     avatar: "",
     time: "1 day ago",
     text: "Check out this amazing article on web development trends 🔗",
@@ -140,69 +144,63 @@ export const dummyPosts: Post[] = [
   {
     id: "8",
     type: "activity",
-    author: "Ramesh Tamang",
+    author: "Roshan Sigdel",
     avatar: "",
     time: "2 days ago",
-    activityText: "Ramesh Tamang updated his profile picture.",
+    activityText: "Roshan Sigdel updated his profile picture.",
     likes: 29,
     comments: [
-      { id: "c8", author: "Shiva Raj Lamsal", avatar: "", text: "Looking great! 👍", time: "1d ago" },
+      { id: "c8", author: "Anusha Lamsal", avatar: "", text: "Looking great! 👍", time: "1d ago" },
     ],
   },
   {
     id: "9",
     type: "checkin",
-    author: "Shiva Raj Lamsal",
+    author: "Samiksha Poudel",
     avatar: "",
     time: "3 days ago",
     text: "Enjoying the peaceful vibes ☕",
-    location: "Kawasoti, Nawalparasi",
+    location: "Kawasoti, Nawalpur",
     likes: 76,
     comments: [
-      { id: "c9", author: "Sunita Thapa", avatar: "", text: "My hometown! ❤️", time: "2d ago" },
+      { id: "c9", author: "Govinda Lamsal", avatar: "", text: "My hometown! ❤️", time: "2d ago" },
     ],
   },
   {
     id: "10",
     type: "memory",
-    author: "Shiva Raj Lamsal",
+    author: "Sagar Devkota",
     avatar: "",
     time: "On this day",
     memoryDate: "1 year ago today",
-    text: "Throwback to the best hiking trip ever! 🏔️",
+    text: "Throwback to the best hike above Lumbini! 🏔️",
     memoryImage: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600",
     likes: 88,
     comments: [
-      { id: "c10", author: "Bibek Rai", avatar: "", text: "Memories! 🥰", time: "3d ago" },
+      { id: "c10", author: "Aayush Lamsal", avatar: "", text: "Memories! 🥰", time: "3d ago" },
     ],
   },
 ];
 
-export const onlineContacts = [
-  { name: "Ramesh Tamang", avatar: "" },
-  { name: "Anita Sharma", avatar: "" },
-  { name: "Priya Adhikari", avatar: "" },
-  { name: "Sabin Karki", avatar: "" },
-  { name: "Manisha Poudel", avatar: "" },
-  { name: "Bikash KC", avatar: "" },
-];
+/** Only Shiva's personal friends appear online. */
+export const onlineContacts = friends.map((f) => ({ name: f.name, avatar: f.avatar }));
 
 export const trendingTopics = [
-  { topic: "React 20 Released", category: "Technology", posts: "12K" },
-  { topic: "Nepal Tourism 2026", category: "Travel", posts: "8K" },
-  { topic: "AI in Education", category: "Science", posts: "15K" },
-  { topic: "Cricket World Cup", category: "Sports", posts: "25K" },
+  { topic: "Nepal Tourism 2026", category: "Travel", posts: "12K" },
+  { topic: "Kathmandu Tech Meetup", category: "Technology", posts: "8K" },
+  { topic: "Chitwan Elephant Festival", category: "Culture", posts: "15K" },
+  { topic: "Nepal Premier League", category: "Sports", posts: "25K" },
 ];
 
-export const suggestedFriends = [
-  { name: "Sita Gurung", avatar: "", mutualFriends: 5 },
-  { name: "Dev Bhandari", avatar: "", mutualFriends: 3 },
-  { name: "Rajan Shrestha", avatar: "", mutualFriends: 8 },
-];
+export const suggestedFriends = communityUsers
+  .slice(0, 6)
+  .map((u) => ({ name: u.name, avatar: u.avatar, mutualFriends: u.mutualFriends ?? 3 }));
 
 export const notifications = [
-  { id: "n1", text: "Ramesh Tamang liked your post", time: "2m ago", read: false },
-  { id: "n2", text: "Anita Sharma commented on your photo", time: "15m ago", read: false },
-  { id: "n3", text: "Priya Adhikari sent you a friend request", time: "1h ago", read: true },
-  { id: "n4", text: "Sabin Karki shared your post", time: "3h ago", read: true },
+  { id: "n1", text: "Aayush Lamsal liked your post.", time: "2m ago", read: false, section: "Today" },
+  { id: "n2", text: "Govinda Lamsal reacted ❤️ to your photo.", time: "15m ago", read: false, section: "Today" },
+  { id: "n3", text: "Being Santosh commented on your post.", time: "1h ago", read: false, section: "Today" },
+  { id: "n4", text: "Anusha Lamsal accepted your friend request.", time: "Yesterday", read: true, section: "Yesterday" },
+  { id: "n5", text: "Amrita Lamsal mentioned you in a comment.", time: "Yesterday", read: true, section: "Yesterday" },
+  { id: "n6", text: "Asmita Lamsal sent you a friend request.", time: "3 days ago", read: true, section: "Earlier" },
 ];
