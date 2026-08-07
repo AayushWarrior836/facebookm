@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SplashScreen from "@/components/SplashScreen";
 import Home from "@/pages/Home";
 import Profile from "@/pages/Profile";
+import Watch from "@/pages/Watch";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/watch" element={<Watch />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
