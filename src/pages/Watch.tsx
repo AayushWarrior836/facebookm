@@ -4,10 +4,12 @@ import Navbar from "@/components/Navbar";
 import { videos, watchCategories } from "@/data/videos";
 
 const Watch = () => {
-  const [active, setActive] = useState("For You");
+  const [active, setActive] = useState("All");
   const [liked, setLiked] = useState<Record<string, boolean>>({});
 
-  const list = active === "For You" ? videos : videos.filter((v) => v.category === active);
+  const categories = ["All", ...watchCategories];
+  const list = active === "All" ? videos : videos.filter((v) => v.category === active);
+
 
   return (
     <div className="min-h-screen bg-background pb-14 md:pb-0">
