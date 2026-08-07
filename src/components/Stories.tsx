@@ -1,11 +1,15 @@
 import { Plus } from "lucide-react";
 import profileImg from "@/assets/profile-shiva.jpg";
 
+/** Stories are created only by community users — never by Shiva's six friends. */
 const stories = [
-  { name: "Ramesh Tamang", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=200&h=300&fit=crop" },
-  { name: "Anita Sharma", image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=200&h=300&fit=crop" },
-  { name: "Priya Adhikari", image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=200&h=300&fit=crop" },
-  { name: "Sabin Karki", image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=200&h=300&fit=crop" },
+  { name: "Laxmi Poudel", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=200&h=300&fit=crop" },
+  { name: "Dip", image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=200&h=300&fit=crop" },
+  { name: "Ramesh Sigdel", image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=200&h=300&fit=crop" },
+  { name: "Sabina Poudel", image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=200&h=300&fit=crop" },
+  { name: "Kiran Lamsal", image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=200&h=300&fit=crop" },
+  { name: "Aarati Sapkota", image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=200&h=300&fit=crop" },
+  { name: "Roshan Sigdel", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&h=300&fit=crop" },
 ];
 
 const Stories = () => (
@@ -21,12 +25,13 @@ const Stories = () => (
       </div>
     </div>
 
-    {/* Friend Stories */}
+    {/* Community Stories */}
     {stories.map((s) => (
       <div key={s.name} className="relative flex-shrink-0 w-24 sm:w-28 h-40 sm:h-48 rounded-xl overflow-hidden cursor-pointer group">
         <img
           src={s.image}
           alt={s.name}
+          loading="lazy"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
