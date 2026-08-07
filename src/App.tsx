@@ -8,6 +8,7 @@ import SplashScreen from "@/components/SplashScreen";
 import Home from "@/pages/Home";
 import Profile from "@/pages/Profile";
 import Watch from "@/pages/Watch";
+import EpisodeDetail from "@/pages/EpisodeDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/watch" element={<Watch />} />
+            <Route path="/watch/:id" element={<EpisodeDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
