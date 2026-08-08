@@ -14,8 +14,8 @@ export interface Story {
 /** Stories are created only by community users — never by Shiva's six friends. */
 export const stories: Story[] = [
   {
-    id: "laxmi",
-    name: "Laxmi Poudel",
+    id: "nisha",
+    name: "Nisha Lamsal",
     time: "2h",
     items: [
       { image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&h=1400&fit=crop", caption: "Evening walk in Kawasoti 🌄" },
@@ -23,8 +23,8 @@ export const stories: Story[] = [
     ],
   },
   {
-    id: "dip",
-    name: "Dip",
+    id: "bibek",
+    name: "Bibek Sapkota",
     time: "3h",
     items: [
       { image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&h=1400&fit=crop", caption: "Pokhara mornings hit different" },

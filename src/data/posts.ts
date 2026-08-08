@@ -38,7 +38,7 @@ export const dummyPosts: Post[] = [
   {
     id: "1",
     type: "text",
-    author: "Laxmi Poudel",
+    author: "Nisha Lamsal",
     avatar: "",
     time: "2 hours ago",
     text: "\"The only way to do great work is to love what you do.\" — Steve Jobs 💡",
@@ -83,7 +83,7 @@ export const dummyPosts: Post[] = [
   {
     id: "4",
     type: "video",
-    author: "Dip",
+    author: "Bibek Sapkota",
     avatar: "",
     time: "6 hours ago",
     text: "How to build your first React app — Full tutorial 🎬",
