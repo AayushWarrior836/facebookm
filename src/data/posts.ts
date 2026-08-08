@@ -1,4 +1,4 @@
-import { friends, communityUsers } from "./people";
+import { friends, communityUsers, locations } from "./people";
 
 export interface Comment {
   id: string;
@@ -206,3 +206,107 @@ export const notifications = [
   { id: "n7", text: "Dip Narayan reacted to a post.", time: "4 days ago", read: true, section: "Earlier" },
   { id: "n8", text: "Laxmi Poudel liked your photo.", time: "5 days ago", read: true, section: "Earlier" },
 ];
+
+/* ---------------- Infinite feed generation ---------------- */
+
+const feedImages = [
+  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600",
+  "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600",
+  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600",
+  "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=600",
+  "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=600",
+  "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600",
+  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600",
+  "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=600",
+];
+
+const captions = [
+  "Morning chiya and mountain views ☕🏔️",
+  "Grateful for days like these 🙏",
+  "Festival vibes with family ✨",
+  "Nothing beats a walk by the river 🌊",
+  "Late night coding session done ✅",
+  "Momo run with the crew 🥟",
+  "Sunrise never disappoints here 🌅",
+  "Weekend well spent 💚",
+];
+
+const commentTexts = [
+  "Beautiful! 😍",
+  "Wow, amazing shot!",
+  "Take me with you next time 😄",
+  "Looks lovely ❤️",
+  "Nice one bro 👏",
+  "Missing this place!",
+];
+
+const timeLabels = ["Just now", "5m ago", "22m ago", "1h ago", "3h ago", "7h ago", "Yesterday", "2 days ago"];
+
+const pick = <T,>(arr: T[], i: number) => arr[i % arr.length];
+
+/** Deterministically generates an endless stream of feed posts. */
+export const generatePosts = (page: number, count = 6): Post[] => {
+  const out: Post[] = [];
+  for (let i = 0; i < count; i++) {
+    const n = page * count + i;
+    const author = pick(communityUsers, n * 3 + 1).name;
+    const type = pick(
+      ["image", "text", "images", "checkin", "poll", "video", "memory"] as const,
+      n
+    );
+    const base = {
+      id: `gen-${page}-${i}`,
+      author,
+      avatar: "",
+      time: pick(timeLabels, n + 2),
+      likes: 8 + ((n * 37) % 220),
+      comments: [
+        {
+          id: `gen-c-${page}-${i}`,
+          author: pick(friends, n + 1).name,
+          avatar: "",
+          text: pick(commentTexts, n),
+          time: pick(timeLabels, n + 4),
+        },
+      ],
+    };
+
+    if (type === "text") {
+      out.push({ ...base, type, text: pick(captions, n) });
+    } else if (type === "image") {
+      out.push({ ...base, type, text: pick(captions, n + 1), image: pick(feedImages, n), location: pick(locations, n) });
+    } else if (type === "images") {
+      out.push({
+        ...base,
+        type,
+        text: pick(captions, n + 2),
+        images: [pick(feedImages, n), pick(feedImages, n + 1), pick(feedImages, n + 2), pick(feedImages, n + 3)],
+      });
+    } else if (type === "checkin") {
+      out.push({ ...base, type, text: pick(captions, n + 3), location: pick(locations, n + 1) });
+    } else if (type === "poll") {
+      out.push({
+        ...base,
+        type,
+        text: "Where should we head this weekend? 🤔",
+        pollOptions: [
+          { label: pick(locations, n), votes: 12 + ((n * 7) % 60) },
+          { label: pick(locations, n + 1), votes: 9 + ((n * 13) % 50) },
+          { label: pick(locations, n + 2), votes: 4 + ((n * 5) % 30) },
+        ],
+      });
+    } else if (type === "video") {
+      out.push({ ...base, type, text: pick(captions, n + 4), videoThumb: pick(feedImages, n + 5) });
+    } else {
+      out.push({
+        ...base,
+        type: "memory",
+        time: "On this day",
+        memoryDate: `${1 + (n % 5)} year${n % 5 === 0 ? "" : "s"} ago today`,
+        text: pick(captions, n + 5),
+        memoryImage: pick(feedImages, n + 6),
+      });
+    }
+  }
+  return out;
+};
