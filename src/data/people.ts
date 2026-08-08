@@ -24,12 +24,12 @@ export const friends: Person[] = [
   { name: "Asmita Lamsal", avatar: "", mutualFriends: 6 },
   { name: "Being Santosh", avatar: "", mutualFriends: 21 },
   { name: "Govinda Lamsal", avatar: "", mutualFriends: 9 },
+  { name: "Laxmi Poudel", avatar: "", mutualFriends: 4 },
+  { name: "Dip Narayan", avatar: "", mutualFriends: 2 },
 ];
 
 /** Community users — they create stories, posts, videos and public content. */
 export const communityUsers: Person[] = [
-  { name: "Laxmi Poudel", avatar: "", mutualFriends: 4 },
-  { name: "Dip", avatar: "", mutualFriends: 2 },
   { name: "Ramesh Sigdel", avatar: "", mutualFriends: 7 },
   { name: "Suman Sapkota", avatar: "", mutualFriends: 3 },
   { name: "Prakash Devkota", avatar: "", mutualFriends: 5 },

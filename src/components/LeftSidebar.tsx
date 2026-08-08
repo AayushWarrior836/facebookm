@@ -4,11 +4,11 @@ import profileImg from "@/assets/profile-shiva.jpg";
 
 const LeftSidebar = () => {
   const links = [
-    { icon: Users, label: "Friends", href: "#" },
+    { icon: Users, label: "Friends", href: "/friends" },
     { icon: Clock, label: "Memories", href: "#" },
     { icon: Bookmark, label: "Saved", href: "#" },
     { icon: UsersRound, label: "Groups", href: "#" },
-    { icon: Tv, label: "Watch", href: "#" },
+    { icon: Tv, label: "Watch", href: "/watch" },
     { icon: Store, label: "Marketplace", href: "#" },
     { icon: MessageCircle, label: "Messenger", href: "#" },
     { icon: Gamepad2, label: "Gaming", href: "#" },

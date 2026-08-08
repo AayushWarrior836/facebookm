@@ -11,13 +11,13 @@ export interface Video {
   category: string;
 }
 
-export const watchCategories = ["Ramayana", "Mahabharat", "Technology", "Gaming", "Education", "Sports", "Music"];
+export const watchCategories = ["Short clips", "Ramayana", "Mahabharat"];
 
 export const videos: Video[] = [
 
   {
     id: "v1",
-    channel: "Dip",
+    channel: "Bibek Sapkota",
     time: "2 hours ago",
     title: "How to build your first React app — Full tutorial",
     thumb: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800",
@@ -25,11 +25,11 @@ export const videos: Video[] = [
     views: "48K views",
     likes: 1340,
     comments: 210,
-    category: "Technology",
+    category: "Short clips",
   },
   {
     id: "v2",
-    channel: "Laxmi Poudel",
+    channel: "Alisha Lamsal",
     time: "5 hours ago",
     title: "Sunrise over Annapurna — 4K drone footage from Pokhara",
     thumb: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800",
@@ -37,7 +37,7 @@ export const videos: Video[] = [
     views: "112K views",
     likes: 5820,
     comments: 431,
-    category: "Education",
+    category: "Short clips",
   },
   {
     id: "v3",
@@ -49,7 +49,7 @@ export const videos: Video[] = [
     views: "3.2K watching",
     likes: 890,
     comments: 1204,
-    category: "Gaming",
+    category: "Short clips",
   },
   {
     id: "v4",
@@ -61,7 +61,7 @@ export const videos: Video[] = [
     views: "27K views",
     likes: 2110,
     comments: 96,
-    category: "Music",
+    category: "Short clips",
   },
   {
     id: "v5",
@@ -73,7 +73,7 @@ export const videos: Video[] = [
     views: "204K views",
     likes: 9320,
     comments: 780,
-    category: "Sports",
+    category: "Short clips",
   },
   {
     id: "v6",
@@ -85,7 +85,7 @@ export const videos: Video[] = [
     views: "61K views",
     likes: 3400,
     comments: 288,
-    category: "Gaming",
+    category: "Short clips",
   },
   {
     id: "v7",
@@ -97,7 +97,7 @@ export const videos: Video[] = [
     views: "89K views",
     likes: 4120,
     comments: 512,
-    category: "Education",
+    category: "Short clips",
   },
   {
     id: "v8",
@@ -109,6 +109,6 @@ export const videos: Video[] = [
     views: "34K views",
     likes: 1780,
     comments: 143,
-    category: "Technology",
+    category: "Short clips",
   },
 ];

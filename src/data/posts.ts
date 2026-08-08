@@ -38,7 +38,7 @@ export const dummyPosts: Post[] = [
   {
     id: "1",
     type: "text",
-    author: "Laxmi Poudel",
+    author: "Nisha Lamsal",
     avatar: "",
     time: "2 hours ago",
     text: "\"The only way to do great work is to love what you do.\" — Steve Jobs 💡",
@@ -83,7 +83,7 @@ export const dummyPosts: Post[] = [
   {
     id: "4",
     type: "video",
-    author: "Dip",
+    author: "Bibek Sapkota",
     avatar: "",
     time: "6 hours ago",
     text: "How to build your first React app — Full tutorial 🎬",
@@ -203,4 +203,6 @@ export const notifications = [
   { id: "n4", text: "Anusha Lamsal accepted your friend request.", time: "Yesterday", read: true, section: "Yesterday" },
   { id: "n5", text: "Amrita Lamsal mentioned you in a comment.", time: "Yesterday", read: true, section: "Yesterday" },
   { id: "n6", text: "Asmita Lamsal sent you a friend request.", time: "3 days ago", read: true, section: "Earlier" },
+  { id: "n7", text: "Dip Narayan reacted to a post.", time: "4 days ago", read: true, section: "Earlier" },
+  { id: "n8", text: "Laxmi Poudel liked your photo.", time: "5 days ago", read: true, section: "Earlier" },
 ];
