@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const navItems = [
     { icon: Home, path: "/", label: "Home" },
-    { icon: Users, path: "#", label: "Friends" },
+    { icon: Users, path: "/friends", label: "Friends" },
     { icon: Tv, path: "/watch", label: "Watch" },
     { icon: Store, path: "#", label: "Marketplace" },
     { icon: Bell, path: "#notif", label: "Notifications" },
@@ -32,9 +32,10 @@ const Navbar = () => {
 
   const desktopNavItems = [
     { icon: Home, path: "/", label: "Home" },
+    { icon: Users, path: "/friends", label: "Friends" },
     { icon: Tv, path: "/watch", label: "Watch" },
+    { icon: Bell, path: "/notifications", label: "Notifications" },
     { icon: Store, path: "#", label: "Marketplace" },
-    { icon: Users, path: "#", label: "Groups" },
     { icon: Gamepad2, path: "#", label: "Gaming" },
   ];
 
