@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
-import { Users, MessageCircle, Bookmark, UsersRound, Clock, Tv, ChevronDown } from "lucide-react";
+import { Users, MessageCircle, Tv, ChevronDown } from "lucide-react";
 import profileImg from "@/assets/profile-shiva.jpg";
 
 const LeftSidebar = () => {
   const links = [
     { icon: Tv, label: "Watch", href: "/watch" },
     { icon: Users, label: "Friends", href: "/friends" },
-    { icon: Clock, label: "Memories", href: "#" },
-    { icon: Bookmark, label: "Saved", href: "#" },
-    { icon: UsersRound, label: "Groups", href: "#" },
     { icon: MessageCircle, label: "Messenger", href: "#" },
   ];
 

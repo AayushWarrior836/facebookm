@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Play, ThumbsUp, MessageCircle, Share2, Bookmark, Radio, Search } from "lucide-react";
+import { Play, ThumbsUp, MessageCircle, Share2, Bookmark, Radio } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { videos, watchCategories } from "@/data/videos";
 import { Episode, episodeThumb, timeAgo, useEpisodes } from "@/hooks/useEpisodes";
@@ -10,23 +10,19 @@ const SERIES = ["Ramayana", "Mahabharat"];
 
 const Watch = () => {
   const [active, setActive] = useState("All");
-  const [query, setQuery] = useState("");
   const [liked, setLiked] = useState<Record<string, boolean>>({});
 
   const { data: episodes = [], isLoading } = useEpisodes(
     SERIES.includes(active) ? active : undefined
   );
 
-  const q = query.trim().toLowerCase();
-  const matches = (text: string) => !q || text.toLowerCase().includes(q);
-
-  const episodeList = episodes.filter((e) => matches(e.title + " " + e.series));
+  const episodeList = episodes;
   const showEpisodes = active === "All" || SERIES.includes(active);
   const mockList = SERIES.includes(active)
     ? []
-    : (active === "All" ? videos : videos.filter((v) => v.category === active)).filter((v) =>
-        matches(v.title + " " + v.channel)
-      );
+    : active === "All"
+      ? videos
+      : videos.filter((v) => v.category === active);
 
   const categories = ["All", ...watchCategories];
 
@@ -64,22 +60,11 @@ const Watch = () => {
         categories={categories}
         active={active}
         onCategory={setActive}
-        query={query}
-        onQuery={setQuery}
         loading={showEpisodes && isLoading}
       />
       <div className="flex justify-center">
         <aside className="hidden lg:block w-[300px] shrink-0 sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto p-4 border-r">
           <h1 className="text-2xl font-bold mb-3">Watch</h1>
-          <div className="relative mb-4">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search videos"
-              className="w-full pl-10 pr-4 py-2 rounded-full bg-secondary text-sm outline-none focus:ring-2 focus:ring-primary/30"
-            />
-          </div>
           <nav className="space-y-1">
             {categories.map((c) => (
               <button

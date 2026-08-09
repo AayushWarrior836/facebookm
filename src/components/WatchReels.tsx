@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Heart, MessageCircle, Share2, Play, Search } from "lucide-react";
+import { Heart, MessageCircle, Share2, Play } from "lucide-react";
 
 export interface ReelItem {
   id: string;
@@ -19,27 +19,16 @@ interface Props {
   categories: string[];
   active: string;
   onCategory: (c: string) => void;
-  query: string;
-  onQuery: (q: string) => void;
   loading?: boolean;
 }
 
 /** Mobile-only, Reels-style full-screen vertical video feed. */
-const WatchReels = ({ items, categories, active, onCategory, query, onQuery, loading }: Props) => {
+const WatchReels = ({ items, categories, active, onCategory, loading }: Props) => {
   const [liked, setLiked] = useState<Record<string, boolean>>({});
 
   return (
     <div className="lg:hidden">
       <div className="sticky top-14 z-20 bg-background/95 backdrop-blur px-3 py-2 space-y-2 border-b">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <input
-            value={query}
-            onChange={(e) => onQuery(e.target.value)}
-            placeholder="Search videos"
-            className="w-full pl-10 pr-4 py-2 rounded-full bg-secondary text-sm outline-none focus:ring-2 focus:ring-primary/30"
-          />
-        </div>
         <div className="flex gap-2 overflow-x-auto scrollbar-hide">
           {categories.map((c) => (
             <button

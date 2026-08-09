@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search, Home, Tv, Users, Bell, MessageCircle, Menu, Moon, Sun, X } from "lucide-react";
+import { Home, Tv, Users, Bell, MessageCircle, Menu, Moon, Sun, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { notifications } from "@/data/posts";
 import profileImg from "@/assets/profile-shiva.jpg";
@@ -7,7 +7,7 @@ import profileImg from "@/assets/profile-shiva.jpg";
 const Navbar = () => {
   const [dark, setDark] = useState(() => localStorage.getItem("theme") === "dark");
   const [showNotifs, setShowNotifs] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
+  
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const location = useLocation();
 
@@ -44,12 +44,6 @@ const Navbar = () => {
           <span className="text-primary font-bold text-[26px] leading-none" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>facebook</span>
         </Link>
         <div className="flex items-center gap-1.5">
-          <button
-            onClick={() => setShowSearch(!showSearch)}
-            className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center"
-          >
-            <Search className="w-[18px] h-[18px] text-foreground" />
-          </button>
           <button className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center">
             <MessageCircle className="w-[18px] h-[18px] text-foreground" />
           </button>
@@ -62,13 +56,6 @@ const Navbar = () => {
           <Link to="/" className="flex items-center shrink-0">
             <img src="/facebook-logo.png" alt="Facebook" className="h-10 object-contain" />
           </Link>
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <input
-              placeholder="Search Facebook"
-              className="w-60 pl-10 pr-4 py-2 rounded-full bg-secondary text-foreground text-sm outline-none focus:ring-2 focus:ring-primary/30 focus:w-72 transition-all"
-            />
-          </div>
         </div>
 
         <div className="flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
@@ -142,24 +129,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile search overlay */}
-      {showSearch && (
-        <div className="fixed inset-0 z-50 bg-card md:hidden animate-fade-in">
-          <div className="flex items-center gap-2 p-3">
-            <button onClick={() => setShowSearch(false)} className="p-2">
-              <X className="w-5 h-5" />
-            </button>
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <input
-                autoFocus
-                placeholder="Search Facebook"
-                className="w-full pl-10 pr-4 py-2.5 rounded-full bg-secondary text-foreground text-sm outline-none focus:ring-2 focus:ring-primary/30"
-              />
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Mobile bottom navigation - Facebook app style tabs */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-card border-t flex items-center justify-around h-12">
