@@ -4,6 +4,7 @@ import { Play, ThumbsUp, MessageCircle, Share2, Bookmark, Radio, Search } from "
 import Navbar from "@/components/Navbar";
 import { videos, watchCategories } from "@/data/videos";
 import { Episode, episodeThumb, timeAgo, useEpisodes } from "@/hooks/useEpisodes";
+import WatchReels, { type ReelItem } from "@/components/WatchReels";
 
 const SERIES = ["Ramayana", "Mahabharat"];
 
@@ -29,9 +30,44 @@ const Watch = () => {
 
   const categories = ["All", ...watchCategories];
 
+  const reelItems: ReelItem[] = [
+    ...(showEpisodes
+      ? episodeList.map((e: Episode) => ({
+          id: e.id,
+          to: `/watch/${e.id}`,
+          channel: e.channel,
+          title: e.title,
+          thumb: episodeThumb(e),
+          views: e.views,
+          likes: e.likes,
+          comments: e.comments_count,
+          badge: `${e.series} · Ep ${e.episode_number}`,
+        }))
+      : []),
+    ...mockList.map((v) => ({
+      id: v.id,
+      channel: v.channel,
+      title: v.title,
+      thumb: v.thumb,
+      views: v.views,
+      likes: v.likes,
+      comments: v.comments,
+      badge: v.duration,
+    })),
+  ];
+
   return (
     <div className="min-h-screen bg-background pb-14 md:pb-0">
       <Navbar />
+      <WatchReels
+        items={reelItems}
+        categories={categories}
+        active={active}
+        onCategory={setActive}
+        query={query}
+        onQuery={setQuery}
+        loading={showEpisodes && isLoading}
+      />
       <div className="flex justify-center">
         <aside className="hidden lg:block w-[300px] shrink-0 sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto p-4 border-r">
           <h1 className="text-2xl font-bold mb-3">Watch</h1>
@@ -60,21 +96,7 @@ const Watch = () => {
           </nav>
         </aside>
 
-        <main className="flex-1 max-w-[680px] min-w-0 py-2 sm:py-4 px-0 sm:px-4 space-y-3 sm:space-y-4">
-          <div className="lg:hidden flex gap-2 overflow-x-auto px-3 pb-1">
-            {categories.map((c) => (
-              <button
-                key={c}
-                onClick={() => setActive(c)}
-                className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                  active === c ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-
+        <main className="hidden lg:block flex-1 max-w-[680px] min-w-0 py-2 sm:py-4 px-0 sm:px-4 space-y-3 sm:space-y-4">
           {/* Episodes from the database */}
           {showEpisodes && isLoading && (
             <div className="space-y-3">
