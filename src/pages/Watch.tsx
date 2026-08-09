@@ -64,22 +64,11 @@ const Watch = () => {
         categories={categories}
         active={active}
         onCategory={setActive}
-        query={query}
-        onQuery={setQuery}
         loading={showEpisodes && isLoading}
       />
       <div className="flex justify-center">
         <aside className="hidden lg:block w-[300px] shrink-0 sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto p-4 border-r">
           <h1 className="text-2xl font-bold mb-3">Watch</h1>
-          <div className="relative mb-4">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search videos"
-              className="w-full pl-10 pr-4 py-2 rounded-full bg-secondary text-sm outline-none focus:ring-2 focus:ring-primary/30"
-            />
-          </div>
           <nav className="space-y-1">
             {categories.map((c) => (
               <button
