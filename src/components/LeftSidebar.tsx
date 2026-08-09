@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Users, MessageCircle, Bookmark, UsersRound, Clock, Tv, Store, Gamepad2, ChevronDown } from "lucide-react";
+import { Users, MessageCircle, Bookmark, UsersRound, Clock, Tv, ChevronDown } from "lucide-react";
 import profileImg from "@/assets/profile-shiva.jpg";
 
 const LeftSidebar = () => {
@@ -9,9 +9,7 @@ const LeftSidebar = () => {
     { icon: Clock, label: "Memories", href: "#" },
     { icon: Bookmark, label: "Saved", href: "#" },
     { icon: UsersRound, label: "Groups", href: "#" },
-    { icon: Store, label: "Marketplace", href: "#" },
     { icon: MessageCircle, label: "Messenger", href: "#" },
-    { icon: Gamepad2, label: "Gaming", href: "#" },
   ];
 
   return (
