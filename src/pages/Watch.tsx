@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Play, ThumbsUp, MessageCircle, Share2, Bookmark, Radio, Search } from "lucide-react";
+import { Play, ThumbsUp, MessageCircle, Share2, Bookmark, Radio } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { videos, watchCategories } from "@/data/videos";
 import { Episode, episodeThumb, timeAgo, useEpisodes } from "@/hooks/useEpisodes";
@@ -10,23 +10,19 @@ const SERIES = ["Ramayana", "Mahabharat"];
 
 const Watch = () => {
   const [active, setActive] = useState("All");
-  const [query, setQuery] = useState("");
   const [liked, setLiked] = useState<Record<string, boolean>>({});
 
   const { data: episodes = [], isLoading } = useEpisodes(
     SERIES.includes(active) ? active : undefined
   );
 
-  const q = query.trim().toLowerCase();
-  const matches = (text: string) => !q || text.toLowerCase().includes(q);
-
-  const episodeList = episodes.filter((e) => matches(e.title + " " + e.series));
+  const episodeList = episodes;
   const showEpisodes = active === "All" || SERIES.includes(active);
   const mockList = SERIES.includes(active)
     ? []
-    : (active === "All" ? videos : videos.filter((v) => v.category === active)).filter((v) =>
-        matches(v.title + " " + v.channel)
-      );
+    : active === "All"
+      ? videos
+      : videos.filter((v) => v.category === active);
 
   const categories = ["All", ...watchCategories];
 
