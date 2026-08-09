@@ -262,9 +262,7 @@ const Navbar = () => {
               {[
                 { icon: Users, label: "Friends" },
                 { icon: MessageCircle, label: "Messenger" },
-                { icon: Store, label: "Marketplace" },
                 { icon: Tv, label: "Watch" },
-                { icon: Gamepad2, label: "Gaming" },
               ].map((item) => (
                 <a key={item.label} href="#" className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary transition-colors text-[15px]">
                   <item.icon className="w-6 h-6 text-primary" />
