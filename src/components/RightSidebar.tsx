@@ -1,5 +1,5 @@
 import { onlineContacts, trendingTopics, suggestedFriends } from "@/data/posts";
-import { Search, MoreHorizontal, Video, UserPlus } from "lucide-react";
+import { MoreHorizontal, Video, UserPlus } from "lucide-react";
 
 const RightSidebar = () => (
   <aside className="hidden xl:flex flex-col w-[280px] p-2 sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto scrollbar-hide">
@@ -57,9 +57,6 @@ const RightSidebar = () => (
         <div className="flex gap-1">
           <button className="p-1.5 rounded-full hover:bg-secondary transition-colors">
             <Video className="w-4 h-4 text-muted-foreground" />
-          </button>
-          <button className="p-1.5 rounded-full hover:bg-secondary transition-colors">
-            <Search className="w-4 h-4 text-muted-foreground" />
           </button>
           <button className="p-1.5 rounded-full hover:bg-secondary transition-colors">
             <MoreHorizontal className="w-4 h-4 text-muted-foreground" />

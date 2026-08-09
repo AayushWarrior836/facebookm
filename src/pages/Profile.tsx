@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Camera, Pencil, MoreHorizontal, UserPlus, ArrowLeft, Search, EllipsisVertical, MapPin, GraduationCap, Briefcase, Heart, Clock } from "lucide-react";
+import { Camera, Pencil, MoreHorizontal, UserPlus, ArrowLeft, EllipsisVertical, MapPin, GraduationCap, Briefcase, Heart, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import PostCard from "@/components/PostCard";
@@ -63,9 +63,7 @@ const Profile = () => {
           <ArrowLeft className="w-5 h-5 text-foreground" />
         </Link>
         <h1 className="font-semibold text-[16px] text-foreground">Shiva Raj Lamsal</h1>
-        <button className="p-2 rounded-full hover:bg-secondary">
-          <Search className="w-5 h-5 text-foreground" />
-        </button>
+        <span className="w-9" />
       </div>
 
       {/* Desktop navbar */}
@@ -273,7 +271,7 @@ const Profile = () => {
             <div className="bg-card md:rounded-lg shadow-sm md:border p-3 sm:p-4 md:mt-4">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-bold text-xl text-foreground">Friends</h2>
-                <input placeholder="Search" className="bg-secondary rounded-full px-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-primary/30 w-32 sm:w-auto" />
+                
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {friends.map((f) => (
