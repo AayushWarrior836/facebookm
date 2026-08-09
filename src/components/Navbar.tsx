@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Search, Home, Tv, Store, Users, Gamepad2, Bell, MessageCircle, Menu, Moon, Sun, X } from "lucide-react";
+import { Search, Home, Tv, Users, Bell, MessageCircle, Menu, Moon, Sun, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { notifications } from "@/data/posts";
 import profileImg from "@/assets/profile-shiva.jpg";
@@ -25,7 +25,6 @@ const Navbar = () => {
     { icon: Home, path: "/", label: "Home" },
     { icon: Users, path: "/friends", label: "Friends" },
     { icon: Tv, path: "/watch", label: "Watch" },
-    { icon: Store, path: "#", label: "Marketplace" },
     { icon: Bell, path: "#notif", label: "Notifications" },
     { icon: Menu, path: "#menu", label: "Menu" },
   ];
@@ -35,8 +34,6 @@ const Navbar = () => {
     { icon: Users, path: "/friends", label: "Friends" },
     { icon: Tv, path: "/watch", label: "Watch" },
     { icon: Bell, path: "/notifications", label: "Notifications" },
-    { icon: Store, path: "#", label: "Marketplace" },
-    { icon: Gamepad2, path: "#", label: "Gaming" },
   ];
 
   return (
