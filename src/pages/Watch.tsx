@@ -73,7 +73,7 @@ const Watch = () => {
                   active === c ? "bg-accent text-primary" : "hover:bg-secondary text-foreground"
                 }`}
               >
-                {c === "Live" ? <Radio className="w-5 h-5" /> : <i className="bi bi-play-fill text-[20px]" />}
+                {c === "Live" ? <i className="bi bi-broadcast text-[20px]" /> : <i className="bi bi-play-fill text-[20px]" />}
                 {c}
               </button>
             ))}

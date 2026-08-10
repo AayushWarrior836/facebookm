@@ -140,7 +140,7 @@ const Profile = () => {
               <i className="bi bi-pencil text-[16px]" /> Edit profile
             </button>
             <button className="px-3 py-2 rounded-md bg-secondary">
-              <EllipsisVertical className="w-4 h-4 text-foreground" />
+              <i className="bi bi-three-dots-vertical text-[16px] text-foreground" />
             </button>
           </div>
 
@@ -249,10 +249,10 @@ const Profile = () => {
               <h2 className="font-bold text-xl text-foreground">About</h2>
               <div className="space-y-2">
                 {[
-                  { icon: Briefcase, title: "Digital creator", sub: "Work" },
-                  { icon: MapPin, title: "Lives in Kawasoti, Nawalpur", sub: "Location" },
-                  { icon: Heart, title: "Married", sub: "Relationship" },
-                  { icon: Clock, title: "Joined 1 year ago", sub: "Joined" },
+                  { icon: "bi-briefcase", title: "Digital creator", sub: "Work" },
+                  { icon: "bi-geo-alt", title: "Lives in Kawasoti, Nawalpur", sub: "Location" },
+                  { icon: "bi-heart", title: "Married", sub: "Relationship" },
+                  { icon: "bi-clock", title: "Joined 1 year ago", sub: "Joined" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary transition-colors">
                     <item.icon className="w-5 h-5 text-muted-foreground" />

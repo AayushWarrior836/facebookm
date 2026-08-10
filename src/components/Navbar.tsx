@@ -21,18 +21,18 @@ const Navbar = () => {
   }, [location.pathname]);
 
   const navItems = [
-    { icon: Home, path: "/", label: "Home" },
-    { icon: Users, path: "/friends", label: "Friends" },
-    { icon: Tv, path: "/watch", label: "Watch" },
-    { icon: Bell, path: "#notif", label: "Notifications" },
-    { icon: Menu, path: "#menu", label: "Menu" },
+    { icon: "bi-house", path: "/", label: "Home" },
+    { icon: "bi-people", path: "/friends", label: "Friends" },
+    { icon: "bi-play-btn", path: "/watch", label: "Watch" },
+    { icon: "bi-bell", path: "#notif", label: "Notifications" },
+    { icon: "bi-list", path: "#menu", label: "Menu" },
   ];
 
   const desktopNavItems = [
-    { icon: Home, path: "/", label: "Home" },
-    { icon: Users, path: "/friends", label: "Friends" },
-    { icon: Tv, path: "/watch", label: "Watch" },
-    { icon: Bell, path: "/notifications", label: "Notifications" },
+    { icon: "bi-house", path: "/", label: "Home" },
+    { icon: "bi-people", path: "/friends", label: "Friends" },
+    { icon: "bi-play-btn", path: "/watch", label: "Watch" },
+    { icon: "bi-bell", path: "/notifications", label: "Notifications" },
   ];
 
   return (
@@ -69,7 +69,7 @@ const Navbar = () => {
                 }`}
                 title={item.label}
               >
-                <item.icon className="w-6 h-6" />
+                <i className={`bi ${item.icon} text-[24px]`} />
                 {isActive && (
                   <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-primary rounded-t-full" />
                 )}
@@ -155,7 +155,7 @@ const Navbar = () => {
                   (isNotif && showNotifs) || (isMenu && showMobileMenu) ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                <item.icon className="w-6 h-6" />
+                <i className={`bi ${item.icon} text-[24px]`} />
                 {isNotif && (
                   <span className="absolute top-1 right-1/2 translate-x-3 w-4 h-4 bg-destructive rounded-full text-[10px] text-destructive-foreground flex items-center justify-center font-bold">3</span>
                 )}
@@ -171,7 +171,7 @@ const Navbar = () => {
                 isActive ? "text-primary" : "text-muted-foreground"
               }`}
             >
-              <item.icon className="w-6 h-6" />
+              <i className={`bi ${item.icon} text-[24px]`} />
               {isActive && (
                 <div className="absolute top-0 left-2 right-2 h-[3px] bg-primary rounded-b-full" />
               )}
@@ -228,12 +228,12 @@ const Navbar = () => {
               </Link>
               <div className="border-t my-2" />
               {[
-                { icon: Users, label: "Friends" },
-                { icon: MessageCircle, label: "Messenger" },
-                { icon: Tv, label: "Watch" },
+                { icon: "bi-people", label: "Friends" },
+                { icon: "bi-chat", label: "Messenger" },
+                { icon: "bi-play-btn", label: "Watch" },
               ].map((item) => (
                 <a key={item.label} href="#" className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary transition-colors text-[15px]">
-                  <item.icon className="w-6 h-6 text-primary" />
+                  <i className={`bi ${item.icon} text-[24px] text-primary`} />
                   {item.label}
                 </a>
               ))}
