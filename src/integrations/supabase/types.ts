@@ -14,6 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
+      comments: {
+        Row: {
+          author_name: string
+          content: string
+          created_at: string
+          id: string
+          likes_count: number
+          parent_id: string | null
+          reel_id: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          author_name?: string
+          content: string
+          created_at?: string
+          id?: string
+          likes_count?: number
+          parent_id?: string | null
+          reel_id: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          author_name?: string
+          content?: string
+          created_at?: string
+          id?: string
+          likes_count?: number
+          parent_id?: string | null
+          reel_id?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "comments_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "comments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "comments_reel_id_fkey"
+            columns: ["reel_id"]
+            isOneToOne: false
+            referencedRelation: "reels"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       episodes: {
         Row: {
           cast_members: Json
@@ -65,6 +116,72 @@ export type Database = {
           title?: string
           views?: string
           youtube_id?: string
+        }
+        Relationships: []
+      }
+      reels: {
+        Row: {
+          category: string
+          comments_count: number
+          content_source: string
+          content_type: string
+          created_at: string
+          creator_avatar: string | null
+          creator_name: string
+          description: string
+          duration: string
+          episode_number: number | null
+          id: string
+          is_published: boolean
+          likes_count: number
+          shares_count: number
+          source_url: string
+          thumbnail_url: string | null
+          title: string
+          video_url: string | null
+          views: string
+        }
+        Insert: {
+          category: string
+          comments_count?: number
+          content_source: string
+          content_type: string
+          created_at?: string
+          creator_avatar?: string | null
+          creator_name?: string
+          description?: string
+          duration?: string
+          episode_number?: number | null
+          id?: string
+          is_published?: boolean
+          likes_count?: number
+          shares_count?: number
+          source_url: string
+          thumbnail_url?: string | null
+          title: string
+          video_url?: string | null
+          views?: string
+        }
+        Update: {
+          category?: string
+          comments_count?: number
+          content_source?: string
+          content_type?: string
+          created_at?: string
+          creator_avatar?: string | null
+          creator_name?: string
+          description?: string
+          duration?: string
+          episode_number?: number | null
+          id?: string
+          is_published?: boolean
+          likes_count?: number
+          shares_count?: number
+          source_url?: string
+          thumbnail_url?: string | null
+          title?: string
+          video_url?: string | null
+          views?: string
         }
         Relationships: []
       }
