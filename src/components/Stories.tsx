@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Plus } from "lucide-react";
 import profileImg from "@/assets/profile-shiva.jpg";
 import { stories } from "@/data/stories";
 import StoryViewer from "./StoryViewer";
@@ -14,7 +13,7 @@ const Stories = () => {
         <div className="relative flex-shrink-0 w-24 sm:w-28 h-40 sm:h-48 rounded-xl overflow-hidden bg-card border shadow-sm cursor-pointer group">
           <img src={profileImg} alt="Your story" className="w-full h-24 sm:h-32 object-cover" />
           <div className="absolute top-[5.2rem] sm:top-[7.2rem] left-1/2 -translate-x-1/2 w-8 sm:w-9 h-8 sm:h-9 rounded-full bg-primary border-4 border-card flex items-center justify-center">
-            <Plus className="w-4 sm:w-5 h-4 sm:h-5 text-primary-foreground" />
+            <i className="bi bi-plus text-[16px] text-primary-foreground" />
           </div>
           <div className="absolute bottom-0 inset-x-0 h-14 sm:h-16 flex items-end justify-center pb-1.5 sm:pb-2">
             <span className="text-[10px] sm:text-xs font-semibold">Create story</span>

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ThumbsUp, MessageCircle, Share2, MapPin, Play, Clock, ExternalLink, MoreHorizontal, Globe } from "lucide-react";
 import type { Post } from "@/data/posts";
 import profileImg from "@/assets/profile-shiva.jpg";
 
@@ -50,11 +49,11 @@ const PostCard = ({ post }: { post: Post }) => {
             <div className="flex items-center gap-1 text-[11px] sm:text-xs text-muted-foreground">
               <span>{post.time}</span>
               <span>·</span>
-              <Globe className="w-3 h-3" />
+              <i className="bi bi-globe text-[12px]" />
               {post.location && (
                 <>
                   <span>·</span>
-                  <MapPin className="w-3 h-3" />
+                  <i className="bi bi-geo-alt text-[12px]" />
                   <span className="font-medium text-foreground truncate max-w-[120px]">{post.location}</span>
                 </>
               )}
@@ -62,14 +61,14 @@ const PostCard = ({ post }: { post: Post }) => {
           </div>
         </div>
         <button className="p-1.5 sm:p-2 rounded-full hover:bg-secondary transition-colors">
-          <MoreHorizontal className="w-5 h-5 text-muted-foreground" />
+          <i className="bi bi-three-dots text-[20px] text-muted-foreground" />
         </button>
       </div>
 
       {/* Memory badge */}
       {post.type === "memory" && (
         <div className="mx-3 mb-2 flex items-center gap-2 px-3 py-2 rounded-lg bg-accent text-accent-foreground text-sm">
-          <Clock className="w-4 h-4" />
+          <i className="bi bi-clock text-[16px]" />
           <span className="font-medium">{post.memoryDate}</span>
         </div>
       )}
@@ -113,7 +112,7 @@ const PostCard = ({ post }: { post: Post }) => {
           <img src={post.videoThumb} alt="video" className="w-full max-h-[400px] sm:max-h-[500px] object-cover" />
           <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
             <div className="w-14 sm:w-16 h-14 sm:h-16 rounded-full bg-black/60 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Play className="w-7 sm:w-8 h-7 sm:h-8 text-white fill-white ml-1" />
+              <i className="bi bi-play-fill text-[28px] text-white ml-1" />
             </div>
           </div>
         </div>
@@ -174,7 +173,7 @@ const PostCard = ({ post }: { post: Post }) => {
             <>
               <div className="flex -space-x-1">
                 <span className="w-[18px] h-[18px] rounded-full bg-primary flex items-center justify-center">
-                  <ThumbsUp className="w-2.5 h-2.5 text-primary-foreground fill-primary-foreground" />
+                  <i className="bi bi-hand-thumbs-up text-[20px] text-primary-foreground fill-primary-foreground" />
                 </span>
               </div>
               <span>{likeCount}</span>
@@ -201,18 +200,18 @@ const PostCard = ({ post }: { post: Post }) => {
             liked ? "text-primary" : "text-muted-foreground"
           }`}
         >
-          <ThumbsUp className={`w-4 sm:w-5 h-4 sm:h-5 ${animateLike ? "animate-like-pop" : ""} ${liked ? "fill-primary" : ""}`} />
+          <i className="bi bi-hand-thumbs-up text-[20px]" className={`w-4 sm:w-5 h-4 sm:h-5 ${animateLike ? "animate-like-pop" : ""} ${liked ? "fill-primary" : ""}`} />
           Like
         </button>
         <button
           onClick={() => setShowComments(!showComments)}
           className="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors"
         >
-          <MessageCircle className="w-4 sm:w-5 h-4 sm:h-5" />
+          <i className="bi bi-chat text-[16px]" />
           Comment
         </button>
         <button className="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">
-          <Share2 className="w-4 sm:w-5 h-4 sm:h-5" />
+          <i className="bi bi-share text-[16px]" />
           Share
         </button>
       </div>

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Users, MessageCircle, Tv, ChevronDown } from "lucide-react";
 import profileImg from "@/assets/profile-shiva.jpg";
 
 const LeftSidebar = () => {
@@ -27,7 +26,7 @@ const LeftSidebar = () => {
       ))}
       <button className="flex items-center gap-3 p-2 rounded-lg hover:bg-secondary transition-colors text-[15px] text-muted-foreground">
         <div className="w-7 h-7 rounded-full bg-secondary flex items-center justify-center">
-          <ChevronDown className="w-4 h-4" />
+          <i className="bi bi-chevron-down text-[16px]" />
         </div>
         See more
       </button>

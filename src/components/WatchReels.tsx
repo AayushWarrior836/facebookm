@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Heart, MessageCircle, Share2, Play } from "lucide-react";
 
 export interface ReelItem {
   id: string;
@@ -55,7 +54,7 @@ const WatchReels = ({ items, categories, active, onCategory, loading }: Props) =
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/40" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-16 h-16 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center">
-                  <Play className="w-8 h-8 text-white fill-white ml-1" />
+                  <i className="bi bi-play-fill text-[32px] text-white ml-1" />
                 </div>
               </div>
             </>
@@ -83,17 +82,17 @@ const WatchReels = ({ items, categories, active, onCategory, loading }: Props) =
                   className="flex flex-col items-center gap-1 active:scale-90 transition-transform"
                   aria-label="Like"
                 >
-                  <Heart className={`w-7 h-7 ${isLiked ? "fill-red-500 text-red-500" : "text-white"}`} />
+                  <i className="bi bi-heart text-[20px]" className={`w-7 h-7 ${isLiked ? "fill-red-500 text-red-500" : "text-white"}`} />
                   <span className="text-[11px] font-semibold text-white">
                     {(item.likes + (isLiked ? 1 : 0)).toLocaleString()}
                   </span>
                 </button>
                 <button className="flex flex-col items-center gap-1 active:scale-90 transition-transform" aria-label="Comment">
-                  <MessageCircle className="w-7 h-7 text-white" />
+                  <i className="bi bi-chat text-[28px] text-white" />
                   <span className="text-[11px] font-semibold text-white">{item.comments.toLocaleString()}</span>
                 </button>
                 <button className="flex flex-col items-center gap-1 active:scale-90 transition-transform" aria-label="Share">
-                  <Share2 className="w-7 h-7 text-white" />
+                  <i className="bi bi-share text-[28px] text-white" />
                   <span className="text-[11px] font-semibold text-white">Share</span>
                 </button>
               </div>

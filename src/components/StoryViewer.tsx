@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { ChevronLeft, ChevronRight, Heart, Pause, Play, Send, X } from "lucide-react";
 import type { Story } from "@/data/stories";
 
 const DURATION = 5000;
@@ -97,7 +96,7 @@ const StoryViewer = ({ stories, startIndex, onClose }: Props) => {
         aria-label="Close stories"
         className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition"
       >
-        <X className="w-5 h-5" />
+        <i className="bi bi-x text-[20px]" />
       </button>
 
       {/* Desktop arrows */}
@@ -107,14 +106,14 @@ const StoryViewer = ({ stories, startIndex, onClose }: Props) => {
         className="hidden sm:flex absolute left-4 md:left-16 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white items-center justify-center transition disabled:opacity-30"
         disabled={userIdx === 0 && itemIdx === 0}
       >
-        <ChevronLeft className="w-6 h-6" />
+        <i className="bi bi-chevron-left text-[24px]" />
       </button>
       <button
         onClick={next}
         aria-label="Next story"
         className="hidden sm:flex absolute right-4 md:right-16 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white items-center justify-center transition"
       >
-        <ChevronRight className="w-6 h-6" />
+        <i className="bi bi-chevron-right text-[24px]" />
       </button>
 
       <div
@@ -161,7 +160,7 @@ const StoryViewer = ({ stories, startIndex, onClose }: Props) => {
             aria-label={paused ? "Play" : "Pause"}
             className="ml-auto mr-10 w-8 h-8 rounded-full hover:bg-white/20 text-white flex items-center justify-center"
           >
-            {paused ? <Play className="w-4 h-4" /> : <Pause className="w-4 h-4" />}
+            {paused ? <i className="bi bi-play-fill text-[16px]" /> : <i className="bi bi-pause-fill text-[16px]" />}
           </button>
         </div>
 
@@ -186,10 +185,10 @@ const StoryViewer = ({ stories, startIndex, onClose }: Props) => {
               aria-label="Like story"
               className="w-10 h-10 rounded-full hover:bg-white/20 flex items-center justify-center transition"
             >
-              <Heart className={`w-5 h-5 transition ${liked ? "fill-red-500 text-red-500 scale-110" : "text-white"}`} />
+              <i className="bi bi-heart text-[20px]" className={`w-5 h-5 transition ${liked ? "fill-red-500 text-red-500 scale-110" : "text-white"}`} />
             </button>
             <button aria-label="Send" className="w-10 h-10 rounded-full hover:bg-white/20 flex items-center justify-center">
-              <Send className="w-5 h-5 text-white" />
+              <i className="bi bi-send text-[20px] text-white" />
             </button>
           </div>
         </div>

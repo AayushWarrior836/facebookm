@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Bell, Check, Trash2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { notifications as initial } from "@/data/posts";
 
@@ -19,7 +18,7 @@ const Notifications = () => {
       <div className="max-w-[680px] mx-auto p-3 sm:p-4">
         <div className="flex items-center justify-between mb-3">
           <h1 className="text-2xl font-bold flex items-center gap-2">
-            <Bell className="w-6 h-6 text-primary" /> Notifications
+            <i className="bi bi-bell text-[24px] text-primary" /> Notifications
           </h1>
           <button onClick={markAllRead} className="text-sm text-primary font-medium hover:underline">
             Mark all as read
@@ -41,7 +40,7 @@ const Notifications = () => {
                     }`}
                   >
                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                      <Bell className="w-4 h-4 text-primary" />
+                      <i className="bi bi-bell text-[16px] text-primary" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className={`text-[15px] break-words ${n.read ? "text-muted-foreground" : "font-medium"}`}>
@@ -57,7 +56,7 @@ const Notifications = () => {
                           aria-label="Mark as read"
                           className="p-1.5 rounded-full hover:bg-muted"
                         >
-                          <Check className="w-4 h-4 text-muted-foreground" />
+                          <i className="bi bi-check text-[16px] text-muted-foreground" />
                         </button>
                       )}
                       <button
@@ -65,7 +64,7 @@ const Notifications = () => {
                         aria-label="Delete notification"
                         className="p-1.5 rounded-full hover:bg-muted"
                       >
-                        <Trash2 className="w-4 h-4 text-muted-foreground" />
+                        <i className="bi bi-trash text-[16px] text-muted-foreground" />
                       </button>
                     </div>
                   </div>

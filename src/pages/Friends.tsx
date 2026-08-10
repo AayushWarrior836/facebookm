@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { UserPlus, MessageCircle, Cake, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { friends, communityUsers, type Person } from "@/data/people";
 
@@ -17,7 +16,7 @@ const FriendCard = ({ person, action }: { person: Person; action: string }) => (
       <p className="font-semibold text-[15px] truncate">{person.name}</p>
       <p className="text-xs text-muted-foreground">{person.mutualFriends ?? 0} mutual friends</p>
       <button className="w-full py-1.5 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
-        {action === "Add Friend" ? <UserPlus className="w-4 h-4" /> : <MessageCircle className="w-4 h-4" />}
+        {action === "Add Friend" ? <i className="bi bi-person-plus text-[16px]" /> : <i className="bi bi-chat text-[16px]" />}
         {action}
       </button>
       <button className="w-full py-1.5 rounded-md bg-secondary text-foreground text-sm font-medium hover:bg-muted transition-colors">
@@ -46,7 +45,7 @@ const Friends = () => {
       <Navbar />
       <div className="max-w-[1100px] mx-auto p-3 sm:p-4">
         <h1 className="text-2xl font-bold mb-3 flex items-center gap-2">
-          <Users className="w-6 h-6 text-primary" /> Friends
+          <i className="bi bi-people text-[24px] text-primary" /> Friends
         </h1>
 
         <div className="flex gap-2 overflow-x-auto pb-3 scrollbar-hide">
@@ -67,24 +66,24 @@ const Friends = () => {
           <div className="space-y-6">
             <section>
               <h2 className="font-semibold text-lg mb-2">Friend requests</h2>
-              <Grid people={requests} action="Add Friend" />
+              <i className="bi bi-grid text-[20px]" people={requests} action="Add Friend" />
             </section>
             <section>
               <h2 className="font-semibold text-lg mb-2">People you may know</h2>
-              <Grid people={suggestions} action="Add Friend" />
+              <i className="bi bi-grid text-[20px]" people={suggestions} action="Add Friend" />
             </section>
           </div>
         )}
 
-        {tab === "Friend Requests" && <Grid people={requests} action="Add Friend" />}
-        {tab === "Suggestions" && <Grid people={suggestions} action="Add Friend" />}
-        {tab === "All Friends" && <Grid people={friends} action="Message" />}
+        {tab === "Friend Requests" && <i className="bi bi-grid text-[20px]" people={requests} action="Add Friend" />}
+        {tab === "Suggestions" && <i className="bi bi-grid text-[20px]" people={suggestions} action="Add Friend" />}
+        {tab === "All Friends" && <i className="bi bi-grid text-[20px]" people={friends} action="Message" />}
 
         {tab === "Birthdays" && (
           <div className="bg-card rounded-xl border p-4 space-y-3">
             {birthdays.map((f) => (
               <div key={f.name} className="flex items-center gap-3">
-                <Cake className="w-6 h-6 text-primary" />
+                <i className="bi bi-cake text-[24px] text-primary" />
                 <p className="text-[15px]">
                   <span className="font-semibold">{f.name}</span> has a birthday today.
                 </p>
