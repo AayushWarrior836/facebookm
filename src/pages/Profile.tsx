@@ -255,7 +255,7 @@ const Profile = () => {
                   { icon: "bi-clock", title: "Joined 1 year ago", sub: "Joined" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary transition-colors">
-                    <item.icon className="w-5 h-5 text-muted-foreground" />
+                    <i className={`bi ${item.icon} text-[20px] text-muted-foreground`} />
                     <div>
                       <p className="text-[15px] font-medium text-foreground">{item.title}</p>
                       <p className="text-[13px] text-muted-foreground">{item.sub}</p>
