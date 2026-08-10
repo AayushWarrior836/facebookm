@@ -200,7 +200,7 @@ const PostCard = ({ post }: { post: Post }) => {
             liked ? "text-primary" : "text-muted-foreground"
           }`}
         >
-          <i className="bi bi-hand-thumbs-up text-[20px]" className={`w-4 sm:w-5 h-4 sm:h-5 ${animateLike ? "animate-like-pop" : ""} ${liked ? "fill-primary" : ""}`} />
+          <i className={`bi bi-hand-thumbs-up text-[20px] ${animateLike ? "animate-like-pop" : ""} ${liked ? "" : ""}`} />
           Like
         </button>
         <button

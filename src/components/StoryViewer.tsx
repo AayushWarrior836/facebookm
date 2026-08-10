@@ -185,7 +185,7 @@ const StoryViewer = ({ stories, startIndex, onClose }: Props) => {
               aria-label="Like story"
               className="w-10 h-10 rounded-full hover:bg-white/20 flex items-center justify-center transition"
             >
-              <i className="bi bi-heart text-[20px]" className={`w-5 h-5 transition ${liked ? "fill-red-500 text-red-500 scale-110" : "text-white"}`} />
+              <i className={`bi bi-heart text-[20px] transition ${liked ? " text-red-500 scale-110" : "text-white"}`} />
             </button>
             <button aria-label="Send" className="w-10 h-10 rounded-full hover:bg-white/20 flex items-center justify-center">
               <i className="bi bi-send text-[20px] text-white" />

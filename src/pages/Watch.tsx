@@ -149,7 +149,7 @@ const Watch = () => {
                       liked[e.id] ? "text-primary" : "text-muted-foreground"
                     }`}
                   >
-                    <i className="bi bi-hand-thumbs-up text-[20px]" className={`w-5 h-5 ${liked[e.id] ? "fill-current" : ""}`} />
+                    <i className={`bi bi-hand-thumbs-up text-[20px] ${liked[e.id] ? "" : ""}`} />
                     <span className="hidden sm:inline">Like</span>
                   </button>
                   <Link
@@ -221,7 +221,7 @@ const Watch = () => {
                     liked[v.id] ? "text-primary" : "text-muted-foreground"
                   }`}
                 >
-                  <i className="bi bi-hand-thumbs-up text-[20px]" className={`w-5 h-5 ${liked[v.id] ? "fill-current" : ""}`} />
+                  <i className={`bi bi-hand-thumbs-up text-[20px] ${liked[v.id] ? "" : ""}`} />
                   <span className="hidden sm:inline">Like</span>
                 </button>
                 <button className="flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary transition-all active:scale-95">

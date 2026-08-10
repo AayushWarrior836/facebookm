@@ -107,7 +107,7 @@ const EpisodeDetail = () => {
                   liked ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                <i className="bi bi-hand-thumbs-up text-[20px]" className={`w-5 h-5 ${liked ? "fill-current" : ""}`} />
+                <i className={`bi bi-hand-thumbs-up text-[20px] ${liked ? "" : ""}`} />
                 <span className="hidden sm:inline">Like</span>
               </button>
               <a
@@ -133,7 +133,7 @@ const EpisodeDetail = () => {
                   saved ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                <i className="bi bi-bookmark text-[20px]" className={`w-5 h-5 ${saved ? "fill-current" : ""}`} />
+                <i className={`bi bi-bookmark text-[20px] ${saved ? "" : ""}`} />
                 <span className="hidden sm:inline">Save</span>
               </button>
             </div>

@@ -82,7 +82,7 @@ const WatchReels = ({ items, categories, active, onCategory, loading }: Props) =
                   className="flex flex-col items-center gap-1 active:scale-90 transition-transform"
                   aria-label="Like"
                 >
-                  <i className="bi bi-heart text-[20px]" className={`w-7 h-7 ${isLiked ? "fill-red-500 text-red-500" : "text-white"}`} />
+                  <i className={`bi bi-heart text-[20px] ${isLiked ? " text-red-500" : "text-white"}`} />
                   <span className="text-[11px] font-semibold text-white">
                     {(item.likes + (isLiked ? 1 : 0)).toLocaleString()}
                   </span>

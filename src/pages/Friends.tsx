@@ -66,18 +66,18 @@ const Friends = () => {
           <div className="space-y-6">
             <section>
               <h2 className="font-semibold text-lg mb-2">Friend requests</h2>
-              <i className="bi bi-grid text-[20px]" people={requests} action="Add Friend" />
+              <Grid people={requests} action="Add Friend" />
             </section>
             <section>
               <h2 className="font-semibold text-lg mb-2">People you may know</h2>
-              <i className="bi bi-grid text-[20px]" people={suggestions} action="Add Friend" />
+              <Grid people={suggestions} action="Add Friend" />
             </section>
           </div>
         )}
 
-        {tab === "Friend Requests" && <i className="bi bi-grid text-[20px]" people={requests} action="Add Friend" />}
-        {tab === "Suggestions" && <i className="bi bi-grid text-[20px]" people={suggestions} action="Add Friend" />}
-        {tab === "All Friends" && <i className="bi bi-grid text-[20px]" people={friends} action="Message" />}
+        {tab === "Friend Requests" && <Grid people={requests} action="Add Friend" />}
+        {tab === "Suggestions" && <Grid people={suggestions} action="Add Friend" />}
+        {tab === "All Friends" && <Grid people={friends} action="Message" />}
 
         {tab === "Birthdays" && (
           <div className="bg-card rounded-xl border p-4 space-y-3">
