@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Camera, Pencil, MoreHorizontal, UserPlus, ArrowLeft, EllipsisVertical, MapPin, GraduationCap, Briefcase, Heart, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import PostCard from "@/components/PostCard";
@@ -60,7 +59,7 @@ const Profile = () => {
       {/* Mobile profile top bar */}
       <div className="md:hidden sticky top-0 z-40 flex items-center justify-between h-11 px-2 bg-card shadow-sm">
         <Link to="/" className="p-2 rounded-full hover:bg-secondary">
-          <ArrowLeft className="w-5 h-5 text-foreground" />
+          <i className="bi bi-arrow-left text-[20px] text-foreground" />
         </Link>
         <h1 className="font-semibold text-[16px] text-foreground">Shiva Raj Lamsal</h1>
         <span className="w-9" />
@@ -81,7 +80,7 @@ const Profile = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
           <button className="absolute bottom-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-card/90 text-foreground text-xs font-medium hover:bg-card transition-colors">
-            <Camera className="w-3.5 h-3.5" />
+            <i className="bi bi-camera text-[14px]" />
             <span className="hidden sm:inline">Edit cover photo</span>
           </button>
         </div>
@@ -97,7 +96,7 @@ const Profile = () => {
                 className="w-[120px] h-[120px] sm:w-[168px] sm:h-[168px] rounded-full border-[4px] border-card object-cover"
               />
               <button className="absolute bottom-1 right-1 w-8 h-8 rounded-full bg-secondary flex items-center justify-center border border-border">
-                <Camera className="w-4 h-4" />
+                <i className="bi bi-camera text-[16px]" />
               </button>
             </div>
 
@@ -121,13 +120,13 @@ const Profile = () => {
             {/* Desktop action buttons */}
             <div className="hidden md:flex gap-2 pb-4">
               <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity">
-                <UserPlus className="w-4 h-4" /> Add to story
+                <i className="bi bi-person-plus text-[16px]" /> Add to story
               </button>
               <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-foreground text-sm font-medium hover:bg-muted transition-colors">
-                <Pencil className="w-4 h-4" /> Edit profile
+                <i className="bi bi-pencil text-[16px]" /> Edit profile
               </button>
               <button className="px-3 py-2 rounded-lg bg-secondary hover:bg-muted transition-colors">
-                <MoreHorizontal className="w-5 h-5" />
+                <i className="bi bi-three-dots text-[20px]" />
               </button>
             </div>
           </div>
@@ -135,13 +134,13 @@ const Profile = () => {
           {/* Mobile action buttons - Facebook app style */}
           <div className="md:hidden flex gap-2 mt-3">
             <button className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md bg-primary text-primary-foreground text-[13px] font-semibold">
-              <UserPlus className="w-4 h-4" /> Add to story
+              <i className="bi bi-person-plus text-[16px]" /> Add to story
             </button>
             <button className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md bg-secondary text-foreground text-[13px] font-semibold">
-              <Pencil className="w-4 h-4" /> Edit profile
+              <i className="bi bi-pencil text-[16px]" /> Edit profile
             </button>
             <button className="px-3 py-2 rounded-md bg-secondary">
-              <EllipsisVertical className="w-4 h-4 text-foreground" />
+              <i className="bi bi-three-dots-vertical text-[16px] text-foreground" />
             </button>
           </div>
 
@@ -174,19 +173,19 @@ const Profile = () => {
                   <h2 className="font-bold text-[18px] mb-3 text-foreground">Details</h2>
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
-                      <Briefcase className="w-5 h-5 text-muted-foreground shrink-0" />
+                      <i className="bi bi-briefcase text-[20px] text-muted-foreground shrink-0" />
                       <p className="text-[14px] text-foreground">Digital creator</p>
                     </div>
                     <div className="flex items-center gap-3">
-                      <MapPin className="w-5 h-5 text-muted-foreground shrink-0" />
+                      <i className="bi bi-geo-alt text-[20px] text-muted-foreground shrink-0" />
                       <p className="text-[14px] text-foreground">Lives in <span className="font-medium">Kawasoti, Nawalpur</span></p>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Heart className="w-5 h-5 text-muted-foreground shrink-0" />
+                      <i className="bi bi-heart text-[20px] text-muted-foreground shrink-0" />
                       <p className="text-[14px] text-foreground">Married</p>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Clock className="w-5 h-5 text-muted-foreground shrink-0" />
+                      <i className="bi bi-clock text-[20px] text-muted-foreground shrink-0" />
                       <p className="text-[14px] text-foreground">Joined 1 year ago</p>
                     </div>
                   </div>
@@ -250,13 +249,13 @@ const Profile = () => {
               <h2 className="font-bold text-xl text-foreground">About</h2>
               <div className="space-y-2">
                 {[
-                  { icon: Briefcase, title: "Digital creator", sub: "Work" },
-                  { icon: MapPin, title: "Lives in Kawasoti, Nawalpur", sub: "Location" },
-                  { icon: Heart, title: "Married", sub: "Relationship" },
-                  { icon: Clock, title: "Joined 1 year ago", sub: "Joined" },
+                  { icon: "bi-briefcase", title: "Digital creator", sub: "Work" },
+                  { icon: "bi-geo-alt", title: "Lives in Kawasoti, Nawalpur", sub: "Location" },
+                  { icon: "bi-heart", title: "Married", sub: "Relationship" },
+                  { icon: "bi-clock", title: "Joined 1 year ago", sub: "Joined" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary transition-colors">
-                    <item.icon className="w-5 h-5 text-muted-foreground" />
+                    <i className={`bi ${item.icon} text-[20px] text-muted-foreground`} />
                     <div>
                       <p className="text-[15px] font-medium text-foreground">{item.title}</p>
                       <p className="text-[13px] text-muted-foreground">{item.sub}</p>
@@ -284,7 +283,7 @@ const Profile = () => {
                       <p className="text-xs text-muted-foreground">3 mutual friends</p>
                     </div>
                     <button className="p-2 rounded-full hover:bg-muted transition-colors shrink-0">
-                      <MoreHorizontal className="w-5 h-5 text-muted-foreground" />
+                      <i className="bi bi-three-dots text-[20px] text-muted-foreground" />
                     </button>
                   </div>
                 ))}

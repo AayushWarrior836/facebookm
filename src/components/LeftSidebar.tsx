@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
-import { Users, MessageCircle, Tv, ChevronDown } from "lucide-react";
 import profileImg from "@/assets/profile-shiva.jpg";
 
 const LeftSidebar = () => {
   const links = [
-    { icon: Tv, label: "Watch", href: "/watch" },
-    { icon: Users, label: "Friends", href: "/friends" },
-    { icon: MessageCircle, label: "Messenger", href: "#" },
+    { icon: "bi-play-btn", label: "Watch", href: "/watch" },
+    { icon: "bi-people", label: "Friends", href: "/friends" },
+    { icon: "bi-chat", label: "Messenger", href: "#" },
   ];
 
   return (
@@ -21,13 +20,13 @@ const LeftSidebar = () => {
           href={l.href}
           className="flex items-center gap-3 p-2 rounded-lg hover:bg-secondary transition-colors text-[15px]"
         >
-          <l.icon className="w-7 h-7 text-primary p-0.5" />
+          <i className={`bi ${l.icon} text-[26px] text-primary`} />
           {l.label}
         </a>
       ))}
       <button className="flex items-center gap-3 p-2 rounded-lg hover:bg-secondary transition-colors text-[15px] text-muted-foreground">
         <div className="w-7 h-7 rounded-full bg-secondary flex items-center justify-center">
-          <ChevronDown className="w-4 h-4" />
+          <i className="bi bi-chevron-down text-[16px]" />
         </div>
         See more
       </button>

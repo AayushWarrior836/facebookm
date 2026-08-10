@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Home, Tv, Users, Bell, MessageCircle, Menu, Moon, Sun, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { notifications } from "@/data/posts";
 import profileImg from "@/assets/profile-shiva.jpg";
@@ -22,18 +21,18 @@ const Navbar = () => {
   }, [location.pathname]);
 
   const navItems = [
-    { icon: Home, path: "/", label: "Home" },
-    { icon: Users, path: "/friends", label: "Friends" },
-    { icon: Tv, path: "/watch", label: "Watch" },
-    { icon: Bell, path: "#notif", label: "Notifications" },
-    { icon: Menu, path: "#menu", label: "Menu" },
+    { icon: "bi-house", path: "/", label: "Home" },
+    { icon: "bi-people", path: "/friends", label: "Friends" },
+    { icon: "bi-play-btn", path: "/watch", label: "Watch" },
+    { icon: "bi-bell", path: "#notif", label: "Notifications" },
+    { icon: "bi-list", path: "#menu", label: "Menu" },
   ];
 
   const desktopNavItems = [
-    { icon: Home, path: "/", label: "Home" },
-    { icon: Users, path: "/friends", label: "Friends" },
-    { icon: Tv, path: "/watch", label: "Watch" },
-    { icon: Bell, path: "/notifications", label: "Notifications" },
+    { icon: "bi-house", path: "/", label: "Home" },
+    { icon: "bi-people", path: "/friends", label: "Friends" },
+    { icon: "bi-play-btn", path: "/watch", label: "Watch" },
+    { icon: "bi-bell", path: "/notifications", label: "Notifications" },
   ];
 
   return (
@@ -45,7 +44,7 @@ const Navbar = () => {
         </Link>
         <div className="flex items-center gap-1.5">
           <button className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center">
-            <MessageCircle className="w-[18px] h-[18px] text-foreground" />
+            <i className="bi bi-chat text-[20px] w-[18px] h-[18px] text-foreground" />
           </button>
         </div>
       </nav>
@@ -70,7 +69,7 @@ const Navbar = () => {
                 }`}
                 title={item.label}
               >
-                <item.icon className="w-6 h-6" />
+                <i className={`bi ${item.icon} text-[24px]`} />
                 {isActive && (
                   <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-primary rounded-t-full" />
                 )}
@@ -81,14 +80,14 @@ const Navbar = () => {
 
         <div className="flex items-center gap-1">
           <button className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors">
-            <MessageCircle className="w-5 h-5 text-foreground" />
+            <i className="bi bi-chat text-[20px] text-foreground" />
           </button>
           <div className="relative">
             <button
               onClick={() => setShowNotifs(!showNotifs)}
               className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors relative"
             >
-              <Bell className="w-5 h-5 text-foreground" />
+              <i className="bi bi-bell text-[20px] text-foreground" />
               <span className="absolute top-1 right-1 w-4 h-4 bg-destructive rounded-full text-[10px] text-destructive-foreground flex items-center justify-center font-bold">3</span>
             </button>
             {showNotifs && (
@@ -104,7 +103,7 @@ const Navbar = () => {
                       }`}
                     >
                       <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                        <Bell className="w-4 h-4 text-primary" />
+                        <i className="bi bi-bell text-[16px] text-primary" />
                       </div>
                       <div className="min-w-0">
                         <p className={`${n.read ? "" : "font-medium"} break-words`}>{n.text}</p>
@@ -121,7 +120,7 @@ const Navbar = () => {
             onClick={() => setDark(!dark)}
             className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-muted transition-colors"
           >
-            {dark ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-foreground" />}
+            {dark ? <i className="bi bi-sun text-[20px] text-yellow-400" /> : <i className="bi bi-moon text-[20px] text-foreground" />}
           </button>
           <Link to="/profile" className="ml-1 shrink-0">
             <img src={profileImg} alt="Profile" className="w-10 h-10 rounded-full object-cover border-2 border-transparent hover:border-primary transition-colors" />
@@ -156,7 +155,7 @@ const Navbar = () => {
                   (isNotif && showNotifs) || (isMenu && showMobileMenu) ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                <item.icon className="w-6 h-6" />
+                <i className={`bi ${item.icon} text-[24px]`} />
                 {isNotif && (
                   <span className="absolute top-1 right-1/2 translate-x-3 w-4 h-4 bg-destructive rounded-full text-[10px] text-destructive-foreground flex items-center justify-center font-bold">3</span>
                 )}
@@ -172,7 +171,7 @@ const Navbar = () => {
                 isActive ? "text-primary" : "text-muted-foreground"
               }`}
             >
-              <item.icon className="w-6 h-6" />
+              <i className={`bi ${item.icon} text-[24px]`} />
               {isActive && (
                 <div className="absolute top-0 left-2 right-2 h-[3px] bg-primary rounded-b-full" />
               )}
@@ -195,7 +194,7 @@ const Navbar = () => {
                 }`}
               >
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <Bell className="w-4 h-4 text-primary" />
+                  <i className="bi bi-bell text-[16px] text-primary" />
                 </div>
                 <div className="min-w-0">
                   <p className={`${n.read ? "" : "font-medium"} break-words`}>{n.text}</p>
@@ -216,7 +215,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between p-4 border-b">
               <h2 className="font-bold text-lg">Menu</h2>
               <button onClick={() => setShowMobileMenu(false)} className="p-2 rounded-full hover:bg-secondary">
-                <X className="w-5 h-5" />
+                <i className="bi bi-x text-[20px]" />
               </button>
             </div>
             <div className="p-2">
@@ -229,12 +228,12 @@ const Navbar = () => {
               </Link>
               <div className="border-t my-2" />
               {[
-                { icon: Users, label: "Friends" },
-                { icon: MessageCircle, label: "Messenger" },
-                { icon: Tv, label: "Watch" },
+                { icon: "bi-people", label: "Friends" },
+                { icon: "bi-chat", label: "Messenger" },
+                { icon: "bi-play-btn", label: "Watch" },
               ].map((item) => (
                 <a key={item.label} href="#" className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary transition-colors text-[15px]">
-                  <item.icon className="w-6 h-6 text-primary" />
+                  <i className={`bi ${item.icon} text-[24px] text-primary`} />
                   {item.label}
                 </a>
               ))}
@@ -243,7 +242,7 @@ const Navbar = () => {
                 onClick={() => { setDark(!dark); setShowMobileMenu(false); }}
                 className="flex items-center gap-3 p-3 rounded-lg hover:bg-secondary transition-colors text-[15px] w-full"
               >
-                {dark ? <Sun className="w-6 h-6 text-yellow-400" /> : <Moon className="w-6 h-6 text-muted-foreground" />}
+                {dark ? <i className="bi bi-sun text-[24px] text-yellow-400" /> : <i className="bi bi-moon text-[24px] text-muted-foreground" />}
                 {dark ? "Light mode" : "Dark mode"}
               </button>
             </div>

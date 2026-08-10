@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Image, Video, Smile, Send } from "lucide-react";
 import profileImg from "@/assets/profile-shiva.jpg";
 import type { Post } from "@/data/posts";
 
@@ -38,22 +37,22 @@ const CreatePost = ({ onPost }: { onPost: (post: Post) => void }) => {
             onClick={handlePost}
             className="p-2 rounded-full bg-primary text-primary-foreground hover:bg-fb-hover transition-colors"
           >
-            <Send className="w-4 h-4" />
+            <i className="bi bi-send text-[16px]" />
           </button>
         )}
       </div>
       <div className="border-t mx-3" />
       <div className="flex items-center justify-around p-1">
         <button className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm text-muted-foreground hover:bg-secondary transition-colors font-medium">
-          <Video className="w-5 h-5 text-destructive" />
+          <i className="bi bi-camera-video text-[20px] text-destructive" />
           <span className="hidden sm:inline">Live video</span>
         </button>
         <button className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm text-muted-foreground hover:bg-secondary transition-colors font-medium">
-          <Image className="w-5 h-5 text-fb-green" />
+          <i className="bi bi-image text-[20px] text-fb-green" />
           <span className="hidden sm:inline">Photo/video</span>
         </button>
         <button className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm text-muted-foreground hover:bg-secondary transition-colors font-medium">
-          <Smile className="w-5 h-5 text-yellow-500" />
+          <i className="bi bi-emoji-smile text-[20px] text-yellow-500" />
           <span className="hidden sm:inline">Feeling/activity</span>
         </button>
       </div>

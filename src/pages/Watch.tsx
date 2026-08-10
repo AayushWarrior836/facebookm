@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Play, ThumbsUp, MessageCircle, Share2, Bookmark, Radio } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { videos, watchCategories } from "@/data/videos";
 import { Episode, episodeThumb, timeAgo, useEpisodes } from "@/hooks/useEpisodes";
@@ -74,7 +73,7 @@ const Watch = () => {
                   active === c ? "bg-accent text-primary" : "hover:bg-secondary text-foreground"
                 }`}
               >
-                {c === "Live" ? <Radio className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+                {c === "Live" ? <i className="bi bi-broadcast text-[20px]" /> : <i className="bi bi-play-fill text-[20px]" />}
                 {c}
               </button>
             ))}
@@ -126,7 +125,7 @@ const Watch = () => {
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Play className="w-8 h-8 text-white fill-white ml-1" />
+                        <i className="bi bi-play-fill text-[32px] text-white ml-1" />
                       </div>
                     </div>
                     <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-xs font-semibold bg-black/70 text-white">
@@ -150,22 +149,22 @@ const Watch = () => {
                       liked[e.id] ? "text-primary" : "text-muted-foreground"
                     }`}
                   >
-                    <ThumbsUp className={`w-5 h-5 ${liked[e.id] ? "fill-current" : ""}`} />
+                    <i className={`bi bi-hand-thumbs-up text-[20px] ${liked[e.id] ? "" : ""}`} />
                     <span className="hidden sm:inline">Like</span>
                   </button>
                   <Link
                     to={`/watch/${e.id}`}
                     className="flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary transition-all active:scale-95"
                   >
-                    <MessageCircle className="w-5 h-5" />
+                    <i className="bi bi-chat text-[20px]" />
                     <span className="hidden sm:inline">Details</span>
                   </Link>
                   <button className="flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary transition-all active:scale-95">
-                    <Share2 className="w-5 h-5" />
+                    <i className="bi bi-share text-[20px]" />
                     <span className="hidden sm:inline">Share</span>
                   </button>
                   <button className="flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary transition-all active:scale-95">
-                    <Bookmark className="w-5 h-5" />
+                    <i className="bi bi-bookmark text-[20px]" />
                     <span className="hidden sm:inline">Save</span>
                   </button>
                 </div>
@@ -198,7 +197,7 @@ const Watch = () => {
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="w-8 h-8 text-white fill-white ml-1" />
+                    <i className="bi bi-play-fill text-[32px] text-white ml-1" />
                   </div>
                 </div>
                 <span
@@ -222,19 +221,19 @@ const Watch = () => {
                     liked[v.id] ? "text-primary" : "text-muted-foreground"
                   }`}
                 >
-                  <ThumbsUp className={`w-5 h-5 ${liked[v.id] ? "fill-current" : ""}`} />
+                  <i className={`bi bi-hand-thumbs-up text-[20px] ${liked[v.id] ? "" : ""}`} />
                   <span className="hidden sm:inline">Like</span>
                 </button>
                 <button className="flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary transition-all active:scale-95">
-                  <MessageCircle className="w-5 h-5" />
+                  <i className="bi bi-chat text-[20px]" />
                   <span className="hidden sm:inline">Comment</span>
                 </button>
                 <button className="flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary transition-all active:scale-95">
-                  <Share2 className="w-5 h-5" />
+                  <i className="bi bi-share text-[20px]" />
                   <span className="hidden sm:inline">Share</span>
                 </button>
                 <button className="flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary transition-all active:scale-95">
-                  <Bookmark className="w-5 h-5" />
+                  <i className="bi bi-bookmark text-[20px]" />
                   <span className="hidden sm:inline">Save</span>
                 </button>
               </div>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, Bookmark, MessageCircle, Share2, ThumbsUp, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { Episode, episodeThumb, timeAgo, useEpisode, useEpisodes } from "@/hooks/useEpisodes";
 import { toast } from "sonner";
@@ -61,7 +60,7 @@ const EpisodeDetail = () => {
             to="/watch"
             className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground"
           >
-            <ArrowLeft className="w-4 h-4" /> Back to Watch
+            <i className="bi bi-arrow-left text-[16px]" /> Back to Watch
           </Link>
 
           <div className="bg-black sm:rounded-xl overflow-hidden">
@@ -108,21 +107,21 @@ const EpisodeDetail = () => {
                   liked ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                <ThumbsUp className={`w-5 h-5 ${liked ? "fill-current" : ""}`} />
+                <i className={`bi bi-hand-thumbs-up text-[20px] ${liked ? "" : ""}`} />
                 <span className="hidden sm:inline">Like</span>
               </button>
               <a
                 href="#comments"
                 className="flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary transition-all active:scale-95"
               >
-                <MessageCircle className="w-5 h-5" />
+                <i className="bi bi-chat text-[20px]" />
                 <span className="hidden sm:inline">Comment</span>
               </a>
               <button
                 onClick={share}
                 className="flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary transition-all active:scale-95"
               >
-                <Share2 className="w-5 h-5" />
+                <i className="bi bi-share text-[20px]" />
                 <span className="hidden sm:inline">Share</span>
               </button>
               <button
@@ -134,7 +133,7 @@ const EpisodeDetail = () => {
                   saved ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                <Bookmark className={`w-5 h-5 ${saved ? "fill-current" : ""}`} />
+                <i className={`bi bi-bookmark text-[20px] ${saved ? "" : ""}`} />
                 <span className="hidden sm:inline">Save</span>
               </button>
             </div>
@@ -152,7 +151,7 @@ const EpisodeDetail = () => {
           {episode.cast_members.length > 0 && (
             <section className="bg-card sm:rounded-xl shadow-sm p-3 sm:p-4">
               <h2 className="font-bold mb-3 flex items-center gap-2">
-                <Users className="w-4 h-4 text-primary" /> Cast
+                <i className="bi bi-people text-[16px] text-primary" /> Cast
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {episode.cast_members.map((c) => (
