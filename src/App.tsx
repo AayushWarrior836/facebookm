@@ -8,7 +8,7 @@ import Profile from "@/pages/Profile";
 import Watch from "@/pages/Watch";
 import Friends from "@/pages/Friends";
 import Notifications from "@/pages/Notifications";
-import EpisodeDetail from "@/pages/EpisodeDetail";
+import ReelDetail from "@/pages/ReelDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,7 +25,7 @@ const App = () => (
           <Route path="/friends" element={<Friends />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/watch" element={<Watch />} />
-          <Route path="/watch/:id" element={<EpisodeDetail />} />
+          <Route path="/watch/:reelId" element={<ReelDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
