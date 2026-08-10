@@ -87,10 +87,14 @@ const WatchReels = ({ items, categories, active, onCategory, loading }: Props) =
                     {(item.likes + (isLiked ? 1 : 0)).toLocaleString()}
                   </span>
                 </button>
-                <button className="flex flex-col items-center gap-1 active:scale-90 transition-transform" aria-label="Comment">
+                <Link
+                  to={item.to ? `${item.to}#comments` : "#"}
+                  className="flex flex-col items-center gap-1 active:scale-90 transition-transform"
+                  aria-label="Comment"
+                >
                   <i className="bi bi-chat text-[28px] text-white" />
                   <span className="text-[11px] font-semibold text-white">{item.comments.toLocaleString()}</span>
-                </button>
+                </Link>
                 <button className="flex flex-col items-center gap-1 active:scale-90 transition-transform" aria-label="Share">
                   <i className="bi bi-share text-[28px] text-white" />
                   <span className="text-[11px] font-semibold text-white">Share</span>
