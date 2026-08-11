@@ -1,3 +1,4 @@
+import LikeIcon from "@/components/LikeIcon";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -149,7 +150,7 @@ const Watch = () => {
                         liked[r.id] ? "text-primary" : "text-muted-foreground"
                       }`}
                     >
-                      <i className="bi bi-hand-thumbs-up text-[20px]" />
+                      <LikeIcon filled={!!liked[r.id]} className="w-[20px] h-[20px]" />
                       <span className="hidden sm:inline">Like</span>
                     </button>
                     <Link

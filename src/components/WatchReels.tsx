@@ -1,3 +1,4 @@
+import LikeIcon from "@/components/LikeIcon";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -43,8 +44,9 @@ const WatchReels = ({ items, categories, active, onCategory, loading }: Props) =
         </div>
       </div>
 
-      <div className="h-[calc(100vh-11rem)] overflow-y-auto snap-y snap-mandatory scrollbar-hide">
-        {loading && <div className="h-full w-full bg-secondary animate-pulse snap-start" />}
+      <div className="h-[calc(100dvh-10.5rem)] overflow-y-auto snap-y snap-mandatory scrollbar-hide overscroll-y-contain">
+        {loading && <div className="h-full w-full shrink-0 bg-secondary animate-pulse snap-start snap-always" />}
+
 
         {items.map((item) => {
           const isLiked = !!liked[item.id];
@@ -61,7 +63,7 @@ const WatchReels = ({ items, categories, active, onCategory, loading }: Props) =
           );
 
           return (
-            <section key={item.id} className="relative h-full w-full snap-start bg-black overflow-hidden">
+            <section key={item.id} className="relative h-full w-full shrink-0 snap-start snap-always bg-black overflow-hidden">
               {item.to ? (
                 <Link to={item.to} className="absolute inset-0 block">
                   {media}
@@ -82,7 +84,7 @@ const WatchReels = ({ items, categories, active, onCategory, loading }: Props) =
                   className="flex flex-col items-center gap-1 active:scale-90 transition-transform"
                   aria-label="Like"
                 >
-                  <i className={`bi bi-heart text-[20px] ${isLiked ? " text-red-500" : "text-white"}`} />
+                  <LikeIcon filled={isLiked} className={`w-[26px] h-[26px] ${isLiked ? "text-primary" : "text-white"}`} />
                   <span className="text-[11px] font-semibold text-white">
                     {(item.likes + (isLiked ? 1 : 0)).toLocaleString()}
                   </span>
