@@ -44,8 +44,9 @@ const WatchReels = ({ items, categories, active, onCategory, loading }: Props) =
         </div>
       </div>
 
-      <div className="h-[calc(100vh-11rem)] overflow-y-auto snap-y snap-mandatory scrollbar-hide">
-        {loading && <div className="h-full w-full bg-secondary animate-pulse snap-start" />}
+      <div className="h-[calc(100dvh-10.5rem)] overflow-y-auto snap-y snap-mandatory scrollbar-hide overscroll-y-contain">
+        {loading && <div className="h-full w-full shrink-0 bg-secondary animate-pulse snap-start snap-always" />}
+
 
         {items.map((item) => {
           const isLiked = !!liked[item.id];
