@@ -63,7 +63,7 @@ const WatchReels = ({ items, categories, active, onCategory, loading }: Props) =
           );
 
           return (
-            <section key={item.id} className="relative h-full w-full snap-start bg-black overflow-hidden">
+            <section key={item.id} className="relative h-full w-full shrink-0 snap-start snap-always bg-black overflow-hidden">
               {item.to ? (
                 <Link to={item.to} className="absolute inset-0 block">
                   {media}
