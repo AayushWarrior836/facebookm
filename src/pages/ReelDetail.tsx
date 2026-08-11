@@ -1,3 +1,4 @@
+import LikeIcon from "@/components/LikeIcon";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -164,7 +165,7 @@ const ReelDetail = () => {
                   liked ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                <i className="bi bi-hand-thumbs-up text-[20px]" />
+                <LikeIcon filled={liked} className="w-[20px] h-[20px]" />
                 <span className="hidden sm:inline">Like</span>
               </button>
               <a

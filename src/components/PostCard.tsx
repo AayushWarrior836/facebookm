@@ -1,5 +1,7 @@
 import { useState } from "react";
 import type { Post } from "@/data/posts";
+import { Link } from "react-router-dom";
+import LikeIcon from "@/components/LikeIcon";
 import profileImg from "@/assets/profile-shiva.jpg";
 
 const getAvatar = (author: string) => {
@@ -108,14 +110,14 @@ const PostCard = ({ post }: { post: Post }) => {
 
       {/* Video */}
       {post.type === "video" && post.videoThumb && (
-        <div className="relative cursor-pointer group">
+        <Link to="/watch" className="relative block cursor-pointer group">
           <img src={post.videoThumb} alt="video" className="w-full max-h-[400px] sm:max-h-[500px] object-cover" />
           <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
             <div className="w-14 sm:w-16 h-14 sm:h-16 rounded-full bg-black/60 flex items-center justify-center group-hover:scale-110 transition-transform">
               <i className="bi bi-play-fill text-[28px] text-white ml-1" />
             </div>
           </div>
-        </div>
+        </Link>
       )}
 
       {/* Memory image */}
@@ -173,7 +175,7 @@ const PostCard = ({ post }: { post: Post }) => {
             <>
               <div className="flex -space-x-1">
                 <span className="w-[18px] h-[18px] rounded-full bg-primary flex items-center justify-center">
-                  <i className="bi bi-hand-thumbs-up text-[20px] text-primary-foreground fill-primary-foreground" />
+                  <LikeIcon filled className="w-[11px] h-[11px] text-primary-foreground" />
                 </span>
               </div>
               <span>{likeCount}</span>
@@ -200,7 +202,7 @@ const PostCard = ({ post }: { post: Post }) => {
             liked ? "text-primary" : "text-muted-foreground"
           }`}
         >
-          <i className={`bi bi-hand-thumbs-up text-[20px] ${animateLike ? "animate-like-pop" : ""} ${liked ? "" : ""}`} />
+          <LikeIcon filled={liked} className={`w-[18px] h-[18px] ${animateLike ? "animate-like-pop" : ""}`} />
           Like
         </button>
         <button

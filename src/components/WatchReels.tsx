@@ -1,3 +1,4 @@
+import LikeIcon from "@/components/LikeIcon";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -82,7 +83,7 @@ const WatchReels = ({ items, categories, active, onCategory, loading }: Props) =
                   className="flex flex-col items-center gap-1 active:scale-90 transition-transform"
                   aria-label="Like"
                 >
-                  <i className={`bi bi-heart text-[20px] ${isLiked ? " text-red-500" : "text-white"}`} />
+                  <LikeIcon filled={isLiked} className={`w-[26px] h-[26px] ${isLiked ? "text-primary" : "text-white"}`} />
                   <span className="text-[11px] font-semibold text-white">
                     {(item.likes + (isLiked ? 1 : 0)).toLocaleString()}
                   </span>
