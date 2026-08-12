@@ -115,18 +115,22 @@ export const useRelatedReels = (reel?: Reel | null) =>
     queryKey: ["reels-related", reel?.content_source, reel?.content_type],
     enabled: !!reel,
     queryFn: async (): Promise<Reel[]> => {
-      const { data, error } = await supabase
+      let q = supabase
         .from("reels")
         .select("*")
         .eq("is_published", true)
         .eq("content_source", reel!.content_source)
-        .eq("content_type", reel!.content_type)
-        .order("created_at", { ascending: false })
-        .limit(12);
+        .eq("content_type", reel!.content_type);
+      q =
+        reel!.content_type === "episode"
+          ? q.order("episode_number", { ascending: true, nullsFirst: false })
+          : q.order("created_at", { ascending: false });
+      const { data, error } = await q.limit(12);
       if (error) throw error;
       return (data ?? []) as unknown as Reel[];
     },
   });
+
 
 export const useComments = (reelId?: string) =>
   useQuery({
