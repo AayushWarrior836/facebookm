@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import ReelComments from "@/components/ReelComments";
+import YouTubePlayer from "@/components/YouTubePlayer";
 import { toast } from "sonner";
+import { useSaveWatchProgress, useWatchHistory } from "@/hooks/useWatchHistory";
 import {
   reelThumb,
   timeAgo,
@@ -24,8 +26,11 @@ const ReelDetail = () => {
   const { reelId } = useParams<{ reelId: string }>();
   const { data: reel, isLoading, isError, error, refetch } = useReel(reelId);
   const { data: related = [] } = useRelatedReels(reel);
+  const { data: history = {}, isLoading: historyLoading } = useWatchHistory();
+  const { save } = useSaveWatchProgress();
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
+
 
   if (isLoading) {
     return (
