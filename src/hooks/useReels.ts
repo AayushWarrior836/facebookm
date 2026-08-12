@@ -72,18 +72,18 @@ export const useReels = (category: WatchCategory) =>
   useQuery({
     queryKey: ["reels", category],
     queryFn: async (): Promise<Reel[]> => {
-      let query = supabase
-        .from("reels")
-        .select("*")
-        .eq("is_published", true)
-        .order("created_at", { ascending: false });
+      let query = supabase.from("reels").select("*").eq("is_published", true);
 
       if (category === "All") {
-        query = query.eq("content_type", "clip");
+        // Clips only, newest first.
+        query = query.eq("content_type", "clip").order("created_at", { ascending: false });
       } else {
+        // Episodes only, in numeric episode order.
         query = query
           .eq("content_type", "episode")
-          .eq("category", category.toLowerCase());
+          .eq("category", category.toLowerCase())
+          .order("episode_number", { ascending: true, nullsFirst: false })
+          .order("created_at", { ascending: true });
       }
 
       const { data, error } = await query;
@@ -91,6 +91,7 @@ export const useReels = (category: WatchCategory) =>
       return (data ?? []) as unknown as Reel[];
     },
   });
+
 
 export const useReel = (id?: string) =>
   useQuery({
@@ -114,18 +115,22 @@ export const useRelatedReels = (reel?: Reel | null) =>
     queryKey: ["reels-related", reel?.content_source, reel?.content_type],
     enabled: !!reel,
     queryFn: async (): Promise<Reel[]> => {
-      const { data, error } = await supabase
+      let q = supabase
         .from("reels")
         .select("*")
         .eq("is_published", true)
         .eq("content_source", reel!.content_source)
-        .eq("content_type", reel!.content_type)
-        .order("created_at", { ascending: false })
-        .limit(12);
+        .eq("content_type", reel!.content_type);
+      q =
+        reel!.content_type === "episode"
+          ? q.order("episode_number", { ascending: true, nullsFirst: false })
+          : q.order("created_at", { ascending: false });
+      const { data, error } = await q.limit(12);
       if (error) throw error;
       return (data ?? []) as unknown as Reel[];
     },
   });
+
 
 export const useComments = (reelId?: string) =>
   useQuery({

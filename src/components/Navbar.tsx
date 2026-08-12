@@ -42,11 +42,18 @@ const Navbar = () => {
         <Link to="/" className="flex items-center shrink-0">
           <span className="text-primary font-bold text-[26px] leading-none" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>facebook</span>
         </Link>
-        <div className="flex items-center gap-1.5">
-          <button className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center">
-            <i className="bi bi-chat text-[20px] w-[18px] h-[18px] text-foreground" />
+        <div className="flex items-center gap-2">
+          <button
+            aria-label="Messenger"
+            className="relative w-10 h-10 rounded-full bg-secondary flex items-center justify-center active:scale-95 transition-transform"
+          >
+            <i className="bi bi-messenger text-[20px] leading-none text-foreground" />
+            <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 rounded-full bg-destructive text-destructive-foreground text-[10px] font-bold flex items-center justify-center border-2 border-card">
+              2
+            </span>
           </button>
         </div>
+
       </nav>
 
       {/* Desktop top bar */}
