@@ -185,6 +185,47 @@ export type Database = {
         }
         Relationships: []
       }
+      watch_history: {
+        Row: {
+          completed: boolean
+          created_at: string
+          id: string
+          progress_seconds: number
+          reel_id: string
+          updated_at: string
+          user_id: string
+          watched_at: string
+        }
+        Insert: {
+          completed?: boolean
+          created_at?: string
+          id?: string
+          progress_seconds?: number
+          reel_id: string
+          updated_at?: string
+          user_id: string
+          watched_at?: string
+        }
+        Update: {
+          completed?: boolean
+          created_at?: string
+          id?: string
+          progress_seconds?: number
+          reel_id?: string
+          updated_at?: string
+          user_id?: string
+          watched_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "watch_history_reel_id_fkey"
+            columns: ["reel_id"]
+            isOneToOne: false
+            referencedRelation: "reels"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
