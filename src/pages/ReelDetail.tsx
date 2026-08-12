@@ -80,6 +80,8 @@ const ReelDetail = () => {
   const thumb = reelThumb(reel);
   const label = reel.content_source === "ramayana" ? "Ramayana" : "Mahabharata";
   const others = related.filter((r) => r.id !== reel.id);
+  const entry = history[reel.id];
+  const resumeAt = entry?.completed ? 0 : entry?.progress_seconds ?? 0;
 
   const share = async () => {
     const url = window.location.href;
@@ -107,13 +109,16 @@ const ReelDetail = () => {
 
           <div className="bg-black sm:rounded-xl overflow-hidden">
             {vid ? (
-              <iframe
-                src={`https://www.youtube.com/embed/${vid}?rel=0`}
-                title={reel.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full aspect-video"
-              />
+              historyLoading ? (
+                <div className="w-full aspect-video animate-pulse" />
+              ) : (
+                <YouTubePlayer
+                  videoId={vid}
+                  title={reel.title}
+                  startSeconds={resumeAt}
+                  onProgress={(seconds, completed) => save(reel.id, seconds, completed)}
+                />
+              )
             ) : (
               <div className="w-full aspect-video relative flex items-center justify-center">
                 {thumb && <img src={thumb} alt={reel.title} className="absolute inset-0 w-full h-full object-cover opacity-40" />}
@@ -134,14 +139,31 @@ const ReelDetail = () => {
           </div>
 
           <div className="bg-card sm:rounded-xl shadow-sm p-3 sm:p-4 space-y-3">
-            <div className="flex items-center gap-2 text-xs">
+            <div className="flex items-center gap-2 text-xs flex-wrap">
               <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-semibold">{label}</span>
               <span className="text-muted-foreground">
                 {reel.content_type === "episode"
                   ? `Episode ${reel.episode_number ?? ""}`.trim()
                   : "Short clip"}
               </span>
+              {entry?.completed ? (
+                <span className="ml-auto inline-flex items-center gap-1 text-primary font-medium">
+                  <i className="bi bi-check-circle-fill" /> Watched
+                </span>
+              ) : (
+                <button
+                  onClick={() => {
+                    save(reel.id, entry?.progress_seconds ?? 0, true);
+                    toast.success("Marked as watched");
+                  }}
+                  className="ml-auto inline-flex items-center gap-1 text-muted-foreground hover:text-primary font-medium"
+                >
+                  <i className="bi bi-check-circle" /> Mark as watched
+                </button>
+              )}
             </div>
+
+
 
             <h1 className="text-lg sm:text-xl font-bold leading-snug">{reel.title}</h1>
 
