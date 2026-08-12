@@ -1,8 +1,9 @@
 import LikeIcon from "@/components/LikeIcon";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import WatchReels, { type ReelItem } from "@/components/WatchReels";
+import { useWatchHistory } from "@/hooks/useWatchHistory";
 import {
   reelThumb,
   timeAgo,
@@ -16,7 +17,14 @@ const Watch = () => {
   const [active, setActive] = useState<WatchCategory>("All");
   const [liked, setLiked] = useState<Record<string, boolean>>({});
 
-  const { data: reels = [], isLoading, isError, error, refetch } = useReels(active);
+  const { data: allReels = [], isLoading, isError, error, refetch } = useReels(active);
+  const { data: history = {} } = useWatchHistory();
+
+  // Hide videos the current viewer has completed; partially watched ones stay visible.
+  const reels = useMemo(
+    () => allReels.filter((r) => !history[r.id]?.completed),
+    [allReels, history],
+  );
 
   const reelItems: ReelItem[] = reels.map((r) => ({
     id: r.id,
@@ -34,6 +42,7 @@ const Watch = () => {
   }));
 
   const categories = [...WATCH_CATEGORIES];
+
 
   return (
     <div className="min-h-screen bg-background pb-14 md:pb-0">
